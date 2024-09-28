@@ -5,13 +5,14 @@ First time using:
 -TypeScript
 -TailwindCSS (disabled tailwind fold just so i can see the css for noob like me)
 -Turborepo (monorepo)
+-Axios
 
-Todo:
-    -Set up auto run only on public client and server    
--create github
+# Todo:
+    -[x]Set up auto run only on public client and server    
+    -[x]Set up github
+    -[ ]Set up simple server
 
-
-Monorepop set up:
-    Installing dependencies (yarn install or npm install).
-    Running the development server (turbo run dev).
-    Building the project (turbo run build).
+# Monorepop set up:
+    -Installing dependencies (yarn install or npm install).
+    -Running the development server (turbo run dev).
+    -Building the project (turbo run build).
