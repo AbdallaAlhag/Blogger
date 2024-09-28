@@ -8,9 +8,10 @@ First time using:
 -Axios
 
 # Todo:
-    -[x]Set up auto run only on public client and server    
-    -[x]Set up github
-    -[ ]Set up simple server
+    - [x] Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio    
+    - [x] Set up github
+    - [ ] Set up simple server
+    - [x] Venus
 
 # Monorepop set up:
     -Installing dependencies (yarn install or npm install).
