@@ -1,0 +1,54 @@
+# Node.js dependencies (root and within packages)
+node_modules/
+**/node_modules/
+
+# Build output directories (root and within packages)
+dist/
+build/
+**/dist/
+**/build/
+
+# Logs (root and all packages)
+logs/
+*.log
+**/logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment-specific files
+.env
+**/.env
+.env.local
+**/.env.local
+
+# TypeScript related
+*.tsbuildinfo
+**/*.tsbuildinfo
+
+# TurboRepo cache
+.turbo/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files (VSCode, JetBrains)
+.vscode/
+.idea/
+
+# ESLint/Prettier caches
+eslintcache
+**/.eslintcache
+.prettiercache
+**/.prettiercache
+
+# Ignore lock files unless needed for reproducible builds
+yarn.lock
+package-lock.json
+
+# Ignore any temporary files used during development
+tmp/
+temp/
+**/tmp/
+**/temp/
