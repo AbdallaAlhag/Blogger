@@ -4,8 +4,8 @@ import prisma from './prisma';
 export async function getAllPosts() {
   try {
     const allPosts = await prisma.post.findMany({
-      where: { published: true },
-      include: { author: true, comments: true },
+      // where: { published: true },
+      include: { author: { select: { id: true, name: true, email: true } } },
     });
     return allPosts;
   } catch (error) {
@@ -16,7 +16,7 @@ export async function getAllPosts() {
 export async function createSinglePost(
   title: string,
   content: string,
-  authorId: number
+  authorId: string
 ) {
   try {
     const newPost = await prisma.post.create({
