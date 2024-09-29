@@ -14,7 +14,6 @@ export default function HomePage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     axios
       .get<{ posts: BlogPost[] }>('http://localhost:3000/api/posts')

@@ -4,8 +4,8 @@
 First time using:
 -TypeScript
 -TailwindCSS (disabled tailwind fold just so i can see the css for noob like me)
--Turborepo (monorepo)
 -Axios
+-Turborepo (monorepo)
 
 ### Todo:
 
@@ -13,9 +13,10 @@ First time using:
     ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
     ✅ Set up github
     ✅ Set up simple server and create main dashboard
-    ❌ Create simple db and set up prisma
+    ✅ Create simple db and set up prisma
     ✅ Created task ctrl+alt+f for npm run format
-    ✅ Setup prisma db, create route, controller, and query for get and post posts, set up simple passport config
+    ✅ Setup prisma db, create route, controller, and query for get and post posts
+    ❌ Write seed file to query db for posts with starting data
 
 # Monorepop set up:
 

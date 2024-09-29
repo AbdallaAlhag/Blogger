@@ -4,6 +4,7 @@ import { getAllPosts, createSinglePost } from '../db/queries';
 export const getPosts = async (req: Request, res: Response) => {
   try {
     const post = await getAllPosts();
+    console.log(post);
     res.json(post);
   } catch (error) {
     console.log(error);
