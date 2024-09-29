@@ -8,11 +8,17 @@ First time using:
 -Axios
 
 ### Todo:
-    ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio    
+
+    ✅❌
+    ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
     ✅ Set up github
-    ❌ Set up simple server and create main dashboard
+    ✅ Set up simple server and create main dashboard
+    ❌ Create simple db and set up prisma
+    ✅ Created task ctrl+alt+f for npm run format
+    ✅ Setup prisma db, create route, controller, and query for get and post posts, set up simple passport config
 
 # Monorepop set up:
+
     -Installing dependencies (yarn install or npm install).
     -Running the development server (turbo run dev).
     -Building the project (turbo run build).

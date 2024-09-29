@@ -1,9 +1,8 @@
 {
-    "files": [],
-    "references": [
-      { "path": "./packages/public-client/blogger-public" },
-      { "path": "./packages/private-client/private-client" },
-      { "path": "./packages/server" }
-    ]
-  }
-  
+  "files": [],
+  "references": [
+    { "path": "./packages/public-client/blogger-public" },
+    { "path": "./packages/private-client/private-client" },
+    { "path": "./packages/server" }
+  ]
+}
