@@ -8,4 +8,9 @@ export default defineConfig({
   css: {
     postcss: path.resolve(__dirname, './postcss.config.js'), // Ensure PostCSS config is referenced
   },
+  resolve: {
+    alias: {
+      '@shared': path.resolve(__dirname, '../../shared-components'),
+    },
+  },
 });

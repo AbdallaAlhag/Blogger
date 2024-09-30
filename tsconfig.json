@@ -1,4 +1,10 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": ["../../shared-components/*"]
+    }
+  },
   "files": [],
   "references": [
     { "path": "./packages/public-client/blogger-public" },

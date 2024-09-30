@@ -16,8 +16,10 @@ First time using:
     ✅ Create simple db and set up prisma
     ✅ Created task ctrl+alt+f for npm run format
     ✅ Setup prisma db, create route, controller, and query for get and post posts
-    ❌ Write seed file to query db for posts with starting data
-
+    ✅ Write seed file to query db for posts with starting data
+    ✅ Connect server db to front end
+    ❌ Create footer and header
+    ❌ Create postcard for articles in dashboard and article pages
 # Monorepop set up:
 
     -Installing dependencies (yarn install or npm install).
