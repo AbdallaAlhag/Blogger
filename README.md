@@ -18,8 +18,9 @@ First time using:
     ✅ Setup prisma db, create route, controller, and query for get and post posts
     ✅ Write seed file to query db for posts with starting data
     ✅ Connect server db to front end
-    ❌ Create footer and header
+    ✅ Create footer and header
     ❌ Create postcard for articles in dashboard and article pages
+
 # Monorepop set up:
 
     -Installing dependencies (yarn install or npm install).
@@ -27,3 +28,4 @@ First time using:
     -Building the project (turbo run build).
 
 - Check out iconify for icons: https://iconify.design/
+- npx kill-port 3000 to kill server if already in use

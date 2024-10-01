@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@shared/*": ["../../shared-components/*"]
+      "@shared/*": ["../shared-components/*"]
     }
   },
   "files": [],
   "references": [
-    { "path": "./packages/public-client/blogger-public" },
-    { "path": "./packages/private-client/private-client" },
+    { "path": "./packages/public-client" },
+    { "path": "./packages/private-client" },
     { "path": "./packages/server" }
   ]
 }

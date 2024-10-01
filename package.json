@@ -2,8 +2,7 @@
   "name": "blogger",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "server"
+    "packages/*"
   ],
   "version": "1.0.0",
   "main": "index.js",
