@@ -17,6 +17,7 @@ const HomePage: React.FC = () => {
     content: string;
     author: { name: string };
     createdAt: string;
+    image: string;
   }
 
   useEffect(() => {
@@ -64,6 +65,7 @@ const HomePage: React.FC = () => {
                 content={post.content}
                 author={post.author.name}
                 createdAt={post.createdAt}
+                image = {post.image}
               />
             </div>
           ))}

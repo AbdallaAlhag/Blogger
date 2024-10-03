@@ -7,6 +7,7 @@ type PostCardProps = {
   content: string;
   author: string;
   createdAt: string;
+  image: string;
 };
 
 const PostCard: React.FC<PostCardProps> = ({
@@ -15,10 +16,19 @@ const PostCard: React.FC<PostCardProps> = ({
   content,
   author,
   createdAt,
+  image,
 }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <div className="p-6">
+        <img
+          src={
+            image === 'default-image.png'
+              ? `https://picsum.photos/seed/${id}/500/200`
+              : image
+          }
+          alt="Post image"
+        />
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
         <p className="text-gray-600 mb-4">{content}</p>
         <div className="flex justify-between items-center text-sm text-gray-500 gap">
@@ -42,6 +52,7 @@ PostCard.propTypes = {
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default PostCard;

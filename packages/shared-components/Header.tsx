@@ -9,7 +9,6 @@ export function Header() {
     setIsDarkMode(!isDarkMode);
     // Here you would typically implement the actual theme switching logic
   };
-
   return (
     <header className="bg-background shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
