@@ -57,18 +57,22 @@ const HomePage: React.FC = () => {
         {/* turn this into a component like 'about blog' section */}
         <h1 className="text-4xl font-bold mb-8 text-center">My Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post: BlogPost) => (
-            <div key={post.id}>
-              <PostCard
-                id={post.id}
-                title={post.title}
-                content={post.content}
-                author={post.author.name}
-                createdAt={post.createdAt}
-                image = {post.image}
-              />
-            </div>
-          ))}
+          {posts.length > 0 ? (
+            posts.map((post: BlogPost) => (
+              <div key={post.id}>
+                <PostCard
+                  id={post.id}
+                  title={post.title}
+                  content={post.content}
+                  author={post.author.name}
+                  createdAt={post.createdAt}
+                  image={post.image}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="text-center">No posts available</div>
+          )}
         </div>
       </div>
       <Footer />

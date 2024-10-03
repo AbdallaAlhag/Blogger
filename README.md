@@ -8,7 +8,6 @@ First time using:
 -Turborepo (monorepo)
 
 ### Todo:
-
     ✅❌
     ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
     ✅ Set up github
@@ -20,7 +19,10 @@ First time using:
     ✅ Connect server db to front end
     ✅ Create footer and header
     ✅ Create postcard for articles in dashboard and article pages
-    ❌ Style HomePage and components
+    ✅ Style HomePage and components
+    ✅ Seed test data for dashboard
+    ❌ Create individual article pages
+    ❌ Add post loading animation
 
 # Monorepop set up:
 
@@ -31,3 +33,8 @@ First time using:
 - Check out iconify for icons: https://iconify.design/ or reacticons
 - npx kill-port 3000 to kill server if already in use
 - https://picsum.photos/ cool random image generator
+
+tailwind:
+- https://flowbite.com/
+- https://tailwindui.com/
+- https://www.material-tailwind.com/
