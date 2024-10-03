@@ -10,6 +10,7 @@ declare module '@shared' {
   export { Header } from './Header';
   export { Footer } from './Footer';
   export { PostCard } from './PostCard';
+  export { MainPostCard } from './MainPostCard';
   export { HeaderButton } from './HeaderButton';
 }
 

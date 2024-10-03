@@ -37,7 +37,7 @@ const PostCard: React.FC<PostCardProps> = ({
   const [loading, setLoading] = useState(true); // Local loading state
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden  hover:transition hover:duration-100 hover:ease-in-out hover:translate-y-[-5px] hover:opacity-80">
       <div className="p-0">
         {loading && <PostCardLoader />}
         <img

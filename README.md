@@ -8,6 +8,7 @@ First time using:
 -Turborepo (monorepo)
 
 ### Todo:
+
     ✅❌
     ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
     ✅ Set up github
@@ -21,8 +22,8 @@ First time using:
     ✅ Create postcard for articles in dashboard and article pages
     ✅ Style HomePage and components
     ✅ Seed test data for dashboard
+    ✅ Add post loading animation
     ❌ Create individual article pages
-    ❌ Add post loading animation
 
 # Monorepop set up:
 
@@ -35,6 +36,7 @@ First time using:
 - https://picsum.photos/ cool random image generator
 
 tailwind:
+
 - https://flowbite.com/
 - https://tailwindui.com/
 - https://www.material-tailwind.com/

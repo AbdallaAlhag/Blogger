@@ -4,6 +4,10 @@ import prisma from './prisma';
 export async function getAllPosts() {
   try {
     const allPosts = await prisma.post.findMany({
+      take: 9,
+      orderBy: {
+        createdAt: 'desc',
+      },
       // where: { published: true },
       include: { author: { select: { id: true, name: true, email: true } } },
     });
