@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Header, Footer, PostCard } from '@shared';
+// import { Header, Footer, PostCard } from '@shared';
+import { Header } from '../../../shared-components/Header';
+import Footer from '../../../shared-components/Footer';
+import PostCard from '../../../shared-components/PostCard';
+
 import axios from 'axios';
 
 const HomePage: React.FC = () => {
@@ -8,7 +12,7 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   interface BlogPost {
-    id: number;
+    id: string;
     title: string;
     content: string;
     author: { name: string };
@@ -49,6 +53,7 @@ const HomePage: React.FC = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="container flex-grow mx-auto px-4 py-8">
+        {/* turn this into a component like 'about blog' section */}
         <h1 className="text-4xl font-bold mb-8 text-center">My Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post: BlogPost) => (

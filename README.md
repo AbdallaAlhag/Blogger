@@ -19,7 +19,8 @@ First time using:
     ✅ Write seed file to query db for posts with starting data
     ✅ Connect server db to front end
     ✅ Create footer and header
-    ❌ Create postcard for articles in dashboard and article pages
+    ✅ Create postcard for articles in dashboard and article pages
+    ❌ Style HomePage and components
 
 # Monorepop set up:
 
@@ -27,5 +28,5 @@ First time using:
     -Running the development server (turbo run dev).
     -Building the project (turbo run build).
 
-- Check out iconify for icons: https://iconify.design/
+- Check out iconify for icons: https://iconify.design/ or reacticons
 - npx kill-port 3000 to kill server if already in use

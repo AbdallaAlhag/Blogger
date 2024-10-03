@@ -2,13 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@shared/*": ["../shared-components/*"]
+      "@shared/*": ["./packages/shared-components/*"]
     }
   },
   "files": [],
   "references": [
     { "path": "./packages/public-client" },
     { "path": "./packages/private-client" },
-    { "path": "./packages/server" }
+    { "path": "./packages/server" },
+    { "path": "./packages/shared-components" }
   ]
 }

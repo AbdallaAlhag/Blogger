@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-interface PostCardProps {
+type PostCardProps = {
   id: string;
   title: string;
   content: string;
   author: string;
   createdAt: string;
-}
+};
 
 const PostCard: React.FC<PostCardProps> = ({
   id,
@@ -21,7 +21,7 @@ const PostCard: React.FC<PostCardProps> = ({
       <div className="p-6">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
         <p className="text-gray-600 mb-4">{content}</p>
-        <div className="flex justify-between items-center text-sm text-gray-500">
+        <div className="flex justify-between items-center text-sm text-gray-500 gap">
           <span>{author}</span>
           <span>{createdAt}</span>
         </div>

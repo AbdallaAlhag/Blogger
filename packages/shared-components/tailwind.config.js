@@ -1,12 +1,19 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}', // Adjust according to your folder structure
+    './shared-components/**/*.{js,jsx,ts,tsx}',
     './**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: '#f0f0f0',
+        'muted-foreground': '#6b7280',
+        primary: '#3b82f6',
+      },
+    },
   },
+
   plugins: [],
 };

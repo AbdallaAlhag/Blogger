@@ -10,7 +10,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@shared': path.resolve(__dirname, '../shared-components'), // Adjust this path
+      '@shared': path.resolve(__dirname, '../shared-components/*'), // Adjust this path
     },
   },
 });

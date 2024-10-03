@@ -1,5 +1,7 @@
 import './styles.css'; // Adjust according to your file structure
 
-export { default as Header } from './Header';
+// packages/shared-components/index.d.ts
+export { Header } from './Header';
 export { default as Footer } from './Footer';
 export { default as PostCard } from './PostCard';
+export { HeaderButton } from './HeaderButton';
