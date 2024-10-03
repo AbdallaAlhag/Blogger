@@ -19,10 +19,19 @@ export function HeaderButton({
   const baseStyles =
     'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
 
+  // const variantStyles = {
+  //   default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+  //   outline:
+  //     'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+  //   ghost: 'hover:bg-accent hover:text-accent-foreground',
+  // };
+
   const variantStyles = {
-    default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-    outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
-    ghost: 'hover:bg-accent hover:text-accent-foreground',
+    default:
+      'bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105',
+    outline:
+      'border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:scale-105',
+    ghost: 'hover:bg-accent hover:text-accent-foreground hover:scale-105',
   };
 
   const sizeStyles = {
@@ -32,6 +41,7 @@ export function HeaderButton({
   };
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+
   if (asChild && href) {
     return (
       <Link to={href} className={combinedClassName}>
