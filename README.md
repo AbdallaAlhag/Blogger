@@ -23,7 +23,7 @@ First time using:
     ✅ Style HomePage and components
     ✅ Seed test data for dashboard
     ✅ Add post loading animation
-    ❌ Create individual article pages
+    ✅ Create individual article pages
 
 # Monorepop set up:
 

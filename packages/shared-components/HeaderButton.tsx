@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'outline' | 'ghost';
   size?: 'default' | 'sm' | 'lg';
-  asChild?: boolean;
   href?: string;
 }
 
@@ -11,7 +10,6 @@ export function HeaderButton({
   children,
   variant = 'default',
   size = 'default',
-  asChild = false,
   className = '',
   href,
   ...props
@@ -42,7 +40,7 @@ export function HeaderButton({
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-  if (asChild && href) {
+  if (href) {
     return (
       <Link to={href} className={combinedClassName}>
         {children}
