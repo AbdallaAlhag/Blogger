@@ -6,3 +6,4 @@ export { default as Footer } from './Footer';
 export { default as PostCard } from './PostCard';
 export { default as MainPostCard } from './MainPostCard';
 export { HeaderButton } from './HeaderButton';
+export { CommentSection } from './CommentSection';

@@ -24,6 +24,8 @@ First time using:
     ✅ Seed test data for dashboard
     ✅ Add post loading animation
     ✅ Create individual article pages
+    ✅ Work on comments section components for article pages
+        ✅ Create comment MVC that attaches comments to posts id
 
 # Monorepop set up:
 

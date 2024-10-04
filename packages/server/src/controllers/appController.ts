@@ -1,5 +1,10 @@
 import { Request, Response } from 'express';
-import { getAllPosts, createSinglePost, getPostById } from '../db/queries';
+import {
+  getAllPosts,
+  createSinglePost,
+  getPostById,
+  createSingleComment,
+} from '../db/queries';
 
 export const getPosts = async (req: Request, res: Response) => {
   try {
@@ -24,6 +29,19 @@ export const createPost = async (req: Request, res: Response) => {
   try {
     const post = await createSinglePost(title, content, authorId);
     res.json(post);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createComment = async (req: Request, res: Response) => {
+  console.log(req.params);
+  const { id } = req.params;
+
+  const { username, content } = req.body;
+  try {
+    const comment = await createSingleComment(id, content, username);
+    res.json(comment);
   } catch (error) {
     console.log(error);
   }

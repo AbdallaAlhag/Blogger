@@ -1,7 +1,6 @@
-import { getSinglePost } from './../controllers/appController';
+// queries.js
 import prisma from './prisma';
 
-// queries.js
 export async function getAllPosts() {
   try {
     const allPosts = await prisma.post.findMany({
@@ -52,10 +51,45 @@ export async function getPostById(id: string) {
             username: true,
           },
         },
+        comments: {
+          orderBy: {
+            createdAt: 'desc',
+          },
+          select: {
+            id: true,
+            username: true, // This is the commenter's username, stored in the comment model
+            content: true, // Include the comment content
+            createdAt: true, // Include when the comment was created
+          },
+        },
       },
     });
+
     console.log(post);
     return post;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createSingleComment(
+  id: string,
+  content: string,
+  username: string
+) {
+  try {
+    const newComment = await prisma.comment.create({
+      data: {
+        content,
+        username,
+        post: {
+          connect: {
+            id,
+          },
+        },
+      },
+    });
+    return newComment;
   } catch (error) {
     console.log(error);
   }

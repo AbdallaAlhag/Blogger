@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Header, Footer } from '@shared';
+import { Header, Footer, CommentSection } from '@shared';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ImageLoader = (props: IContentLoaderProps) => (
   <ContentLoader
@@ -31,6 +32,7 @@ const ArticlePage: React.FC = () => {
     author: { name: string };
     createdAt: string;
     image: string;
+    comments: Comment[];
   }
 
   useEffect(() => {
@@ -62,17 +64,6 @@ const ArticlePage: React.FC = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="container flex-grow mx-auto px-4 py-8">
-        {/* {loading && <ImageLoader />}
-        <img
-          className="w-full h-auto object-cover mb-6"
-          src={
-            post.image === 'default-image.png'
-              ? `https://picsum.photos/seed/${id}/300/200`
-              : post.image
-          }
-          alt={post.title}
-          onLoad={() => setLoading(false)}
-        /> */}
         <div className="image-container relative w-full h-0 pb-[56.25%] mb-6 overflow-hidden">
           {loading && <ImageLoader />}
           <img
@@ -104,6 +95,18 @@ const ArticlePage: React.FC = () => {
             </p>
           ))}
         </div>
+        <div className="mt-8">
+          <Link to="/">
+            <button
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+            >
+              &#8617; Back
+            </button>
+          </Link>
+        </div>
+        <hr className="my-12 border-gray-300" />
+        <CommentSection comments={post.comments} blogId={id} />
       </div>
       <Footer />
     </div>
