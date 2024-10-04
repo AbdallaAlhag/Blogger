@@ -9,6 +9,7 @@ declare module '@shared' {
   export { Footer } from '../../shared-components/Footer';
   export { PostCard } from '../../shared-components/PostCard';
   export { HeaderButton } from '../../shared-components/HeaderButton';
+  export { MainPostCard } from '../../shared-components/MainPostCard';
 }
 // import React from 'react';
 

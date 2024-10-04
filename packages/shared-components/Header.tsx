@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { HeaderButton } from './HeaderButton';
+// import Logo from '../public-client/public/blogger-high-resolution-logo.png'; // Adjust path if necessary
 
 export function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -13,9 +14,11 @@ export function Header() {
     <header className="bg-background shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <HeaderButton href="/" asChild variant="ghost">
-            <span className="text-2xl font-bold text-primary">Logo</span>
-          </HeaderButton>
+          <img
+            src="/blogger-high-resolution-logo.png"
+            alt="Blogger logo"
+            className="h-16 max-w-full w-auto transition-transform duration-200 transform hover:scale-105"
+          />
           <HeaderButton href="/" variant="ghost">
             Home
           </HeaderButton>

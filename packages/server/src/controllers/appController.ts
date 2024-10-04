@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllPosts, createSinglePost } from '../db/queries';
+import { getAllPosts, createSinglePost, getPostById } from '../db/queries';
 
 export const getPosts = async (req: Request, res: Response) => {
   try {
@@ -10,6 +10,15 @@ export const getPosts = async (req: Request, res: Response) => {
   }
 };
 
+export const getSinglePost = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const post = await getPostById(id);
+    res.json(post);
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const createPost = async (req: Request, res: Response) => {
   const { title, content, authorId } = req.body;
   try {

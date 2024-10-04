@@ -34,6 +34,7 @@ First time using:
 - Check out iconify for icons: https://iconify.design/ or reacticons
 - npx kill-port 3000 to kill server if already in use
 - https://picsum.photos/ cool random image generator
+- https://logo.com/editor/colors logo + favicon
 
 tailwind:
 

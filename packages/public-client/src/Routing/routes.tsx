@@ -1,11 +1,18 @@
-import HomePage from '../Pages';
-import ErrorPage from './ErrorPage';
+import { HomePage, ErrorPage, ArticlePage } from '../Pages';
 
 const routes = [
   {
     path: '/',
     element: <HomePage />,
-    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/article/:id',
+    element: <ArticlePage />,
+  },
+  {
+    // Catch-all route for 404 errors
+    path: '*',
+    element: <ErrorPage />,
   },
 ];
 

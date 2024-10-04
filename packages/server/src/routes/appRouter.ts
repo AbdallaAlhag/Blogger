@@ -1,8 +1,13 @@
 import express from 'express';
 const router = express.Router();
-import { getPosts, createPost } from '../controllers/appController';
+import {
+  getPosts,
+  createPost,
+  getSinglePost,
+} from '../controllers/appController';
 
 router.get('/posts', getPosts);
+router.get('/posts/:id', getSinglePost);
 
 router.post('/posts', createPost);
 

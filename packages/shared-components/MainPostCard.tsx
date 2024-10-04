@@ -51,10 +51,10 @@ const PostCard: React.FC<PostCardProps> = ({
         src={
           image === 'default-image.png'
             ? isLarge
-              ? `https://picsum.photos/seed/${id}/1000/600`
+              ? `https://picsum.photos/seed/${id}/1000/610`
               : `https://picsum.photos/seed/${id}/500/300`
             : isLarge
-              ? `${image}?w=1000&h=600`
+              ? `${image}?w=1000&h=610`
               : `${image}?w=500&h=300`
         }
         alt={title}
@@ -71,7 +71,7 @@ const PostCard: React.FC<PostCardProps> = ({
             {content.split(' ').slice(0, 15).join(' ')}...
           </p>
           <Link
-            to={`/post/${id}`}
+            to={`/article/${id}`}
             className="inline-block px-4 py-2 bg-white text-blue-500 font-semibold rounded hover:bg-blue-500 hover:text-white transition duration-300"
           >
             Read More

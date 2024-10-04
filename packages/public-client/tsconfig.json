@@ -17,5 +17,11 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
+  ],
+  "include": [
+    "src",
+    "../shared-components",
+    "declaration.d.ts",
+    "shared.d.ts" // Include the declaration file
   ]
 }

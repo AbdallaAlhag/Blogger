@@ -1,3 +1,4 @@
+import { getSinglePost } from './../controllers/appController';
 import prisma from './prisma';
 
 // queries.js
@@ -31,6 +32,30 @@ export async function createSinglePost(
       },
     });
     return newPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getPostById(id: string) {
+  try {
+    const post = await prisma.post.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            username: true,
+          },
+        },
+      },
+    });
+    console.log(post);
+    return post;
   } catch (error) {
     console.log(error);
   }
