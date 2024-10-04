@@ -88,12 +88,22 @@ const ArticlePage: React.FC = () => {
             onLoad={() => setLoading(false)}
           />
         </div>
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <div className="text-lg">{post.content}</div>
-        <p className="mt-6 text-gray-600">
+        <h1 className="text-4xl font-extrabold">{post.title}</h1>
+        <p className="mt-2 text-gray-600 mb-4">
           Written by {post.author.name} on{' '}
           {new Date(post.createdAt).toLocaleDateString()}
         </p>
+        {/* <div className="text-lg">{post.content}</div> */}
+        <div className="text-lg">
+          {post.content.split('\n').map((paragraph, index) => (
+            <p
+              key={index}
+              className="mb-4  max-w-screen-small sm:max-w-screen-2xl leading-relaxed text-justify"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
       <Footer />
     </div>
