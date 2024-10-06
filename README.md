@@ -26,6 +26,13 @@ First time using:
     ✅ Create individual article pages
     ✅ Work on comments section components for article pages
         ✅ Create comment MVC that attaches comments to posts id
+    ❌ Link sign up and login to redirect to the private client and logout redirects to public client
+    ❌ Create auth and login/signup pages
+        ❌ Implement passport to authenticate users
+        ❌ Use JWT for auth
+
+    ❌ Create Post blog page
+    ❌ Allow users to edit their own posts
 
 # Monorepop set up:
 
