@@ -2,7 +2,10 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcryptjs';
 import prisma from '../db/prisma';
-import { User } from '@prisma/client';
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
 passport.use(
   new LocalStrategy(
@@ -24,6 +27,32 @@ passport.use(
         return done(null, user);
       } catch (err) {
         return done(err as Error);
+      }
+    }
+  )
+);
+
+// JWT Strategy for protected routes
+passport.use(
+  new JwtStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: JWT_SECRET,
+    },
+    async (
+      jwtPayload,
+      done: (error: Error | null | unknown, user: Express.User) => void
+    ) => {
+      try {
+        const user = await prisma.user.findUnique({
+          where: { id: jwtPayload.id },
+        });
+
+        if (!user) return done(null, false);
+
+        return done(null, user);
+      } catch (error: unknown) {
+        return done(error, false);
       }
     }
   )
