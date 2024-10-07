@@ -1,19 +1,49 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Hook to programmatically navigate
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically handle the login logic
-    console.log('Login attempted with:', { email, password });
+    axios
+      .post('./login/guest', { username, password })
+      .then((res) => {
+        if (res.status === 200) {
+          // Successfully logged in
+          console.log('Successfully logged in');
+          // how does it now where dashboard is?
+          navigate('/dashboard'); // Redirect to dashboard after login
+        } else {
+          console.log('Login failed');
+        }
+      })
+      .catch((err) => {
+        console.log('Login failed', err);
+      });
   };
 
   const handleGuestLogin = () => {
     // Here you would handle guest login logic
-    console.log('Guest login attempted');
+    // console.log('Guest login attempted');
+    axios
+      .post('./login/guest', { username, password })
+      .then((res) => {
+        if (res.status === 200) {
+          // Successfully logged in
+          console.log('Successfully logged in');
+        } else {
+          console.log('Login failed');
+        }
+      })
+      .catch((err) => {
+        console.log('Login failed', err);
+      });
   };
 
   return (
@@ -29,20 +59,20 @@ export default function LoginPage() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email address
+                Username
               </label>
               <div className="mt-1">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="username"
+                  name="username"
+                  type="username"
+                  autoComplete="username"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>

@@ -5,6 +5,8 @@ import {
   HomePage,
   ErrorPage,
   ArticlePage,
+  LoginPage,
+  SignUpPage,
 } from '../../../public-client/src/Pages';
 
 const routes = [
@@ -15,6 +17,14 @@ const routes = [
   {
     path: '/article/:id',
     element: <ArticlePage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignUpPage />,
   },
   {
     // Catch-all route for 404 errors
