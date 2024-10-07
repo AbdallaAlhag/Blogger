@@ -27,10 +27,10 @@ First time using:
     ✅ Work on comments section components for article pages
         ✅ Create comment MVC that attaches comments to posts id
     ❌ Link sign up and login to redirect to the private client and logout redirects to public client
-    ❌ Create auth and login/signup pages
-        ❌ Implement passport to authenticate users
+        ❌ Allow users to log in and sign up
+    ✅ Create auth and login/signup pages
+         Implement passport to authenticate users
         ❌ Use JWT for auth
-
     ❌ Create Post blog page
     ❌ Allow users to edit their own posts
 
@@ -42,8 +42,12 @@ First time using:
 
 - Check out iconify for icons: https://iconify.design/ or reacticons
 - npx kill-port 3000 to kill server if already in use
+- if private build not working: "build": "vite build",
+
+
 - https://picsum.photos/ cool random image generator
 - https://logo.com/editor/colors logo + favicon
+
 
 tailwind:
 

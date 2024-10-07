@@ -1,6 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "outDir": "./dist",           // Move output files (including .d.ts) to ./dist
+    "declaration": false,          // Generate .d.ts files
+    // "declarationDir": "./dist",   // Move .d.ts files to the dist directory
+    "emitDeclarationOnly": false, // Emit both .js and .d.ts files
+    "sourceMap": true,            // Enable sourcemaps (optional)
     "moduleResolution": "bundler",
     "jsx": "react-jsx", // or "react" depending on React version
     "esModuleInterop": true,
