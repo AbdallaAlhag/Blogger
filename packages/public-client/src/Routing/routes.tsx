@@ -1,4 +1,10 @@
-import { HomePage, ErrorPage, ArticlePage } from '../Pages';
+import {
+  HomePage,
+  ErrorPage,
+  ArticlePage,
+  LoginPage,
+  SignUpPage,
+} from '../Pages';
 
 const routes = [
   {
@@ -8,6 +14,14 @@ const routes = [
   {
     path: '/article/:id',
     element: <ArticlePage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignUpPage />,
   },
   {
     // Catch-all route for 404 errors
