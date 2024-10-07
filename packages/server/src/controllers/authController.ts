@@ -19,7 +19,7 @@ export const signUp = async (
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-    const newAccount = await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         username: req.body.username,
         email: req.body.email,
@@ -27,10 +27,10 @@ export const signUp = async (
       },
     });
 
-    res.redirect('/login');
+    res.status(200).json({ message: 'Successfully Signed up', user });
   } catch (err) {
     next(err);
-    res.redirect('/signup');
+    next(err);
   }
 };
 // // basic login
@@ -58,7 +58,7 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
           return next(err);
         }
 
-        return res.redirect('/');
+        res.status(200).json({ message: 'Successfully Logged in', user });
       });
     }
   )(req, res, next);
@@ -99,6 +99,6 @@ export const loginAsGuest = (
 export const logOut = (req: Request, res: Response, next: NextFunction) => {
   req.logout((err) => {
     if (err) return next(err);
-    res.redirect('/login');
+    res.status(201).json({ message: 'Successfully logged out' });
   });
 };

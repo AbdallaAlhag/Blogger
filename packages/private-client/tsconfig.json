@@ -1,16 +1,17 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx", // or "react" depending on React version
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
     "module": "esnext",
-    "baseUrl": "./",
+    "baseUrl": ".", // This points to the root of your public-client folder
     "paths": {
-      "@shared/*": ["../shared-components/*"]
+      "@shared/*": ["../shared-components/*"],
+      "@public-client/*": ["../public-client/src/*"]
     }
   },
   "files": [],
@@ -22,6 +23,7 @@
     "src",
     "../shared-components",
     "declaration.d.ts",
-    "shared.d.ts" // Include the declaration file
+    "shared.d.ts", // Include the declaration file
+    "../public-client/src"
   ]
 }

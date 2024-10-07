@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import prisma from './db/prisma';
+import { errorHandler } from './middleware/errorHandler'; // Import your error handler
 import passport from './Auth/passport'; // The passport configuration file
 import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
@@ -23,11 +25,32 @@ const corsOptions = {
 //   optionsSuccessStatus: 200,
 // };
 
+// The following code is for handling graceful shutdowns of the server
+// We use these events to disconnect from the database before the process exits
+// This is important because Prisma will otherwise throw an error when the process
+// is killed, as it will not be able to properly disconnect from the database.
+
+// Handle SIGINT (e.g. Ctrl+C in the terminal)
+process.on('SIGINT', async () => {
+  console.log('Received SIGINT, disconnecting from database');
+  await prisma.$disconnect();
+  process.exit(0);
+});
+
+// Handle SIGTERM (e.g. kill command in the terminal)
+process.on('SIGTERM', async () => {
+  console.log('Received SIGTERM, disconnecting from database');
+  await prisma.$disconnect();
+  process.exit(0);
+});
+
 const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
 // Middleware to initialize Passport
 app.use(passport.initialize());
+// Middleware to handle errors
+app.use(errorHandler);
 
 app.use('/', appRouter);
 app.use('/auth', authRouter);
