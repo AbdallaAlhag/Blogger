@@ -3,33 +3,27 @@ import passport from '../Auth/passport';
 import prisma from '../db/prisma';
 import { NextFunction, Request, Response } from 'express';
 
-// export const getSignupForm = (req: Request, res: Response) => {
-//   res.render('signup', { errors: {}, data: {} });
-// };
-
-// export const getLoginForm = (req: Request, res: Response) => {
-//   res.render('login', { errorMessage: '' });
-// };
-
 export const signUp = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const { username, email, name, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
       data: {
-        username: req.body.username,
-        email: req.body.email,
+        username,
+        email,
+        name,
         password: hashedPassword,
       },
     });
 
     res.status(200).json({ message: 'Successfully Signed up', user });
   } catch (err) {
-    next(err);
     next(err);
   }
 };

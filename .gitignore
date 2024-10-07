@@ -18,6 +18,7 @@ yarn-error.log*
 
 # Environment-specific files
 .env
+.env.*
 **/.env
 .env.local
 **/.env.local

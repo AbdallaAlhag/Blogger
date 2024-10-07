@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { HeaderButton } from './HeaderButton';
+import { Link } from 'react-router-dom';
 // import Logo from '../public-client/public/blogger-high-resolution-logo.png'; // Adjust path if necessary
 
 export function Header() {
@@ -19,8 +20,8 @@ export function Header() {
             alt="Blogger logo"
             className="h-16 max-w-full w-auto transition-transform duration-200 transform hover:scale-105"
           />
-          <HeaderButton href="/" variant="ghost">
-            Home
+          <HeaderButton variant="ghost">
+            <Link to="/">Home</Link>
           </HeaderButton>
         </div>
         <div className="flex items-center space-x-4">
@@ -36,10 +37,12 @@ export function Header() {
               <Moon className="h-5 w-5" />
             )}
           </HeaderButton>
-          <HeaderButton href="/signin" variant="outline">
-            Sign In
+          <HeaderButton>
+            <Link to="/login">Sign In</Link>
           </HeaderButton>
-          <HeaderButton href="/signup">Sign Up</HeaderButton>
+          <HeaderButton>
+            <Link to="/signup">Sign Up</Link>
+          </HeaderButton>
         </div>
       </div>
     </header>

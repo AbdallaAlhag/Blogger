@@ -21,11 +21,13 @@ export function CommentSection({
   const [newComment, setNewComment] = useState('');
   const [username, setUsername] = useState('');
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newComment.trim() && username.trim()) {
       const { data: newCommentData } = await axios.post(
-        `http://localhost:3000/posts/${blogId}/comments`,
+        `${baseURL}/posts/${blogId}/comments`,
         {
           username,
           content: newComment,

@@ -11,6 +11,8 @@ export default function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate(); // Hook to programmatically navigate
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically handle the sign-up logic
@@ -20,8 +22,20 @@ export default function SignUpPage() {
       password,
       confirmPassword,
     });
+
+    if (!username || !email || !password || !confirmPassword) {
+      console.log('Please fill in all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match');
+      return;
+    }
+
     axios
-      .post('/signup', {
+      .post(`${baseURL}/auth/signup`, {
+        username,
         name,
         email,
         password,

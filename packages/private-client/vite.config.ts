@@ -7,8 +7,8 @@ console.log(__dirname);
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist',       // Ensure the build goes to dist folder
-    sourcemap: true,      // Optional: Generate source maps for debugging
+    outDir: 'dist', // Ensure the build goes to dist folder
+    sourcemap: true, // Optional: Generate source maps for debugging
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.tsx'), // Your entry file
     },

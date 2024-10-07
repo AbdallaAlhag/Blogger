@@ -34,10 +34,11 @@ const ArticlePage: React.FC = () => {
     image: string;
     comments: Comment[];
   }
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/posts/${id}`) // Fetch post by ID
+      .get(`${baseURL}/posts/${id}`) // Fetch post by ID
       .then(({ data }) => {
         setPost(data);
         setIsLoading(false);
@@ -46,7 +47,7 @@ const ArticlePage: React.FC = () => {
         setError(error.message);
         setIsLoading(false);
       });
-  }, [id]);
+  }, [baseURL, id]);
 
   if (isLoading) {
     return <div>Loading...</div>;

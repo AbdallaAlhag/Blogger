@@ -8,6 +8,8 @@ const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+  console.log('base url: ', baseURL);
   interface BlogPost {
     id: string;
     title: string;
@@ -19,7 +21,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/posts')
+      .get(`${baseURL}/posts`)
       .then(({ data }) => {
         // Ensure 'author' is always an object with a 'name'
         const updatedPosts = data.map((post: BlogPost) => ({
@@ -33,7 +35,7 @@ const HomePage: React.FC = () => {
         setError(error.message);
         setIsLoading(false);
       });
-  }, []);
+  }, [baseURL]);
 
   if (isLoading) {
     return (

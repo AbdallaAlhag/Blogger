@@ -11,7 +11,7 @@ export const getPosts = async (req: Request, res: Response) => {
     const post = await getAllPosts();
     res.json(post);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -21,7 +21,7 @@ export const getSinglePost = async (req: Request, res: Response) => {
     const post = await getPostById(id);
     res.json(post);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 export const createPost = async (req: Request, res: Response) => {
@@ -30,12 +30,11 @@ export const createPost = async (req: Request, res: Response) => {
     const post = await createSinglePost(title, content, authorId);
     res.json(post);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
 export const createComment = async (req: Request, res: Response) => {
-  console.log(req.params);
   const { id } = req.params;
 
   const { username, content } = req.body;
@@ -43,6 +42,6 @@ export const createComment = async (req: Request, res: Response) => {
     const comment = await createSingleComment(id, content, username);
     res.json(comment);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

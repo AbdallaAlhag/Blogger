@@ -65,7 +65,6 @@ export async function getPostById(id: string) {
       },
     });
 
-    console.log(post);
     return post;
   } catch (error) {
     console.log(error);

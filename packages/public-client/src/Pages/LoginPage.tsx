@@ -8,11 +8,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // Hook to programmatically navigate
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically handle the login logic
     axios
-      .post('./login/guest', { username, password })
+      .post(`${baseURL}/auth/login`, { username, password })
       .then((res) => {
         if (res.status === 200) {
           // Successfully logged in
@@ -32,7 +34,7 @@ export default function LoginPage() {
     // Here you would handle guest login logic
     // console.log('Guest login attempted');
     axios
-      .post('./login/guest', { username, password })
+      .post(`${baseURL}/auth/login/guest`, { username, password })
       .then((res) => {
         if (res.status === 200) {
           // Successfully logged in

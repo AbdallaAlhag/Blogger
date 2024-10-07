@@ -3,7 +3,7 @@ function dashboard() {
     <div>
       <h1>Dashboard</h1>
     </div>
-)
+  );
 }
 
-export default dashboard
+export default dashboard;
