@@ -45,8 +45,9 @@ First time using:
 - npx kill-port 3000 to kill server if already in use
 - if private build not working: "build": "vite build",
 - script to remove js and d.ts from src:
-    - find src -name '\*.js' -type f -delete
-    - find src -name '\*.d.ts' -type f -delete
+
+  - find src -name '\*.js' -type f -delete
+  - find src -name '\*.d.ts' -type f -delete
 
 - https://picsum.photos/ cool random image generator
 - https://logo.com/editor/colors logo + favicon
@@ -58,6 +59,7 @@ tailwind:
 - https://www.material-tailwind.com/
 
 Code for protected routes:
+
 <!-- import { Router } from 'express';
 import { authenticateJWT } from '../middleware/authMiddleware';
 import { createPost } from '../controllers/postController';
@@ -73,6 +75,7 @@ export default router; -->
 When making requests to the server for protected routes, you’ll need to attach the saved token to the request headers (usually under the Authorization header).
 
 Example of using the token for making authenticated API requests:
+
 <!-- const token = localStorage.getItem('token');  // Retrieve the token from localStorage
 
 axios.get('/protected-route', {

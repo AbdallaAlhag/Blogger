@@ -45,6 +45,15 @@ export function Header() {
               <Moon className="h-5 w-5" />
             )}
           </HeaderButton>
+          <HeaderButton
+            onClick={() => {
+              console.log(import.meta.env.VITE_PRIVATE_CLIENT_URL);
+              window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/create-blog`;
+              // navigate('/create-blog', { replace: true });
+            }}
+          >
+            Create Blog
+          </HeaderButton>
           {isUserLoggedIn ? (
             <HeaderButton
               onClick={() => {

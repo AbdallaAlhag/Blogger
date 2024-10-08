@@ -8,6 +8,8 @@ import {
   LoginPage,
   SignUpPage,
 } from '../../../public-client/src/Pages';
+import CreateBlogPost from '../Pages/CreateBlogPage';
+import ProtectedRoute from '../middleware/ProtectedRoute';
 
 const routes = [
   {
@@ -30,6 +32,14 @@ const routes = [
     // Catch-all route for 404 errors
     path: '*',
     element: <ErrorPage />,
+  },
+  {
+    path: '/create-blog',
+    element: (
+      <ProtectedRoute>
+        <CreateBlogPost />
+      </ProtectedRoute>
+    ),
   },
 ];
 

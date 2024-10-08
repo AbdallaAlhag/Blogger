@@ -20,6 +20,7 @@ export async function getAllPosts() {
 export async function createSinglePost(
   title: string,
   content: string,
+  image: string,
   authorId: string
 ) {
   try {
@@ -27,7 +28,12 @@ export async function createSinglePost(
       data: {
         title,
         content,
-        authorId,
+        image,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
       },
     });
     return newPost;

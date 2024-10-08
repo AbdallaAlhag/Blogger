@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/errorHandler'; // Import your error h
 import passport from './Auth/passport'; // The passport configuration file
 import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
+import path from 'path';
 
 const corsOptions = {
   origin: ['http://localhost:5173', 'http://localhost:5174'], // allow to server to accept request from our react clients
@@ -52,6 +53,10 @@ app.use(passport.initialize());
 // Middleware to handle errors
 app.use(errorHandler);
 app.use(passport.initialize());
+app.use(express.urlencoded({ extended: true }));
+
+// __dirname wasn't working
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 app.use('/', appRouter);
 app.use('/auth', authRouter);
