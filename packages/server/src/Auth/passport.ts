@@ -1,36 +1,35 @@
 import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
-import bcrypt from 'bcryptjs';
+// import { Strategy as LocalStrategy } from 'passport-local';
+// import bcrypt from 'bcryptjs';
 import prisma from '../db/prisma';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-// import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
+const JWT_SECRET = process.env.JWT_SECRET || 'a santa cat';
+// Session based authentication
+// passport.use(
+//   new LocalStrategy(
+//     { usernameField: 'username', passwordField: 'password' },
+//     async (
+//       username: string,
+//       password: string,
+//       done: (err: Error | null, user?: Express.User) => void
+//     ) => {
+//       try {
+//         const user = await prisma.user.findUnique({ where: { username } });
 
-passport.use(
-  new LocalStrategy(
-    { usernameField: 'username', passwordField: 'password' },
-    async (
-      username: string,
-      password: string,
-      done: (err: Error | null, user?: Express.User) => void
-    ) => {
-      try {
-        const user = await prisma.user.findUnique({ where: { username } });
+//         if (!user) return done(null, false);
 
-        if (!user) return done(null, false);
+//         const match = await bcrypt.compare(password, user.password);
 
-        const match = await bcrypt.compare(password, user.password);
+//         if (!match) return done(null, false);
 
-        if (!match) return done(null, false);
-
-        return done(null, user);
-      } catch (err) {
-        return done(err as Error);
-      }
-    }
-  )
-);
+//         return done(null, user);
+//       } catch (err) {
+//         return done(err as Error);
+//       }
+//     }
+//   )
+// );
 
 // JWT Strategy for protected routes
 passport.use(

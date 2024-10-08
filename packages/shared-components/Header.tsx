@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
 import { HeaderButton } from './HeaderButton';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,14 @@ import { Link } from 'react-router-dom';
 
 export function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
+  const isAuthenticated = () => !!localStorage.getItem('token'); // returns true if token exists
+
+  useEffect(() => {
+    setIsUserLoggedIn(isAuthenticated());
+  }, []);
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     // Here you would typically implement the actual theme switching logic
@@ -37,12 +45,26 @@ export function Header() {
               <Moon className="h-5 w-5" />
             )}
           </HeaderButton>
-          <HeaderButton>
-            <Link to="/login">Sign In</Link>
-          </HeaderButton>
-          <HeaderButton>
-            <Link to="/signup">Sign Up</Link>
-          </HeaderButton>
+          {isUserLoggedIn ? (
+            <HeaderButton
+              onClick={() => {
+                localStorage.removeItem('token');
+                setIsUserLoggedIn(false);
+                navigate('/login', { replace: true });
+              }}
+            >
+              Logout
+            </HeaderButton>
+          ) : (
+            <>
+              <HeaderButton>
+                <Link to="/login">Sign In</Link>
+              </HeaderButton>
+              <HeaderButton>
+                <Link to="/signup">Sign Up</Link>
+              </HeaderButton>
+            </>
+          )}
         </div>
       </div>
     </header>

@@ -56,3 +56,33 @@ tailwind:
 - https://flowbite.com/
 - https://tailwindui.com/
 - https://www.material-tailwind.com/
+
+Code for protected routes:
+<!-- import { Router } from 'express';
+import { authenticateJWT } from '../middleware/authMiddleware';
+import { createPost } from '../controllers/postController';
+
+const router = Router();
+
+// Protect the /create-post route, only accessible if the JWT token is valid
+router.post('/create-post', authenticateJWT, createPost);
+
+export default router; -->
+
+. Accessing the Token Later:
+When making requests to the server for protected routes, you’ll need to attach the saved token to the request headers (usually under the Authorization header).
+
+Example of using the token for making authenticated API requests:
+<!-- const token = localStorage.getItem('token');  // Retrieve the token from localStorage
+
+axios.get('/protected-route', {
+  headers: {
+    Authorization: `Bearer ${token}` // Attach the token in the Authorization header
+  }
+})
+  .then((response) => {
+    console.log('Protected data:', response.data);
+  })
+  .catch((error) => {
+    console.error('Access denied:', error.response ? error.response.data : error.message);
+  }); -->

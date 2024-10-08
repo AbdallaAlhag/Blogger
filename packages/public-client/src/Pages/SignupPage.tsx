@@ -44,7 +44,7 @@ export default function SignUpPage() {
       .then((res) => {
         if (res.status === 200) {
           console.log('Signed up successfully');
-          navigate('/login');
+          navigate('/login', { replace: true });
         } else {
           console.log('Sign-up failed', res);
         }

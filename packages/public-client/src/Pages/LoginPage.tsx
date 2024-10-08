@@ -20,7 +20,12 @@ export default function LoginPage() {
           // Successfully logged in
           console.log('Successfully logged in');
           // how does it now where dashboard is?
-          navigate('/dashboard'); // Redirect to dashboard after login
+          // Assuming the server returns a token in the response
+          const token = res.data.token;
+
+          // Save token to localStorage
+          localStorage.setItem('token', token); // Or use sessionStorage or cookies
+          navigate('/dashboard', { replace: true }); // Redirect to dashboard after login
         } else {
           console.log('Login failed');
         }
@@ -38,7 +43,13 @@ export default function LoginPage() {
       .then((res) => {
         if (res.status === 200) {
           // Successfully logged in
+          // Assuming the server returns a token in the response
+          const token = res.data.token;
+
+          // Save token to localStorage
+          localStorage.setItem('token', token); // Or use sessionStorage or cookies
           console.log('Successfully logged in');
+          navigate('/dashboard', { replace: true });
         } else {
           console.log('Login failed');
         }
@@ -47,7 +58,6 @@ export default function LoginPage() {
         console.log('Login failed', err);
       });
   };
-
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
