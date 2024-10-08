@@ -9,7 +9,6 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
-  console.log('base url: ', baseURL);
   interface BlogPost {
     id: string;
     title: string;

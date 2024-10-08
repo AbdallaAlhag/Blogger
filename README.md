@@ -27,12 +27,13 @@ First time using:
     ✅ Work on comments section components for article pages
         ✅ Create comment MVC that attaches comments to posts id
     ❌ Link sign up and login to redirect to the private client and logout redirects to public client
-        ❌ Allow users to log in and sign up
     ✅ Create auth and login/signup pages
-         Implement passport to authenticate users
-        ❌ Use JWT for auth
+        ✅ Allow users to sign up and log in
+        ✅ Implement passport to authenticate users
+        ✅ Use JWT for auth
     ❌ Create Post blog page
     ❌ Allow users to edit their own posts
+    ❌ Validate login and signup form and showcase errors
 
 # Monorepop set up:
 

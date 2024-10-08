@@ -25,7 +25,7 @@ export default function LoginPage() {
 
           // Save token to localStorage
           localStorage.setItem('token', token); // Or use sessionStorage or cookies
-          navigate('/dashboard', { replace: true }); // Redirect to dashboard after login
+          navigate('/', { replace: true }); // Redirect to dashboard after login
         } else {
           console.log('Login failed');
         }
@@ -49,7 +49,7 @@ export default function LoginPage() {
           // Save token to localStorage
           localStorage.setItem('token', token); // Or use sessionStorage or cookies
           console.log('Successfully logged in');
-          navigate('/dashboard', { replace: true });
+          navigate('/', { replace: true });
         } else {
           console.log('Login failed');
         }
