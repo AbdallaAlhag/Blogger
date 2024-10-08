@@ -7,6 +7,7 @@ import {
   ArticlePage,
   LoginPage,
   SignUpPage,
+  BlogPage,
 } from '../../../public-client/src/Pages';
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import ProtectedRoute from '../middleware/ProtectedRoute';
@@ -40,6 +41,10 @@ const routes = [
         <CreateBlogPost />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: '/blog',
+    element: <BlogPage />,
   },
 ];
 

@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import {
   getAllPosts,
+  getHomePosts,
   createSinglePost,
   getPostById,
   createSingleComment,
 } from '../db/queries';
 import path from 'path';
-import fs from 'fs';
 import multer from 'multer';
 
 // Set up multer for handling file uploads
@@ -56,6 +56,15 @@ export const createPost = [
 ];
 
 export const getPosts = async (req: Request, res: Response) => {
+  try {
+    const post = await getHomePosts();
+    res.json(post);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getEveryPosts = async (req: Request, res: Response) => {
   try {
     const post = await getAllPosts();
     res.json(post);

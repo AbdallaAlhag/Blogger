@@ -4,6 +4,7 @@ import {
   ArticlePage,
   LoginPage,
   SignUpPage,
+  BlogPage,
 } from '../Pages';
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
     // Catch-all route for 404 errors
     path: '*',
     element: <ErrorPage />,
+  },
+  {
+    path: '/blog',
+    element: <BlogPage />,
   },
 ];
 

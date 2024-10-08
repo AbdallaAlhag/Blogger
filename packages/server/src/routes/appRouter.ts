@@ -5,9 +5,11 @@ import {
   createPost,
   getSinglePost,
   createComment,
+  getEveryPosts,
 } from '../controllers/appController';
 
 router.get('/posts', getPosts);
+router.get('/posts-all', getEveryPosts);
 router.get('/posts/:id', getSinglePost);
 
 router.post('/posts', createPost);

@@ -34,6 +34,7 @@ First time using:
     ❌ Create Post blog page
     ❌ Allow users to edit their own posts
     ❌ Validate login and signup form and showcase errors
+    ❌ Add comments count to PostCard components
 
 # Monorepop set up:
 
