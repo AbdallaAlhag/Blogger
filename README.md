@@ -45,9 +45,8 @@ First time using:
 - npx kill-port 3000 to kill server if already in use
 - if private build not working: "build": "vite build",
 - script to remove js and d.ts from src:
-
-  - find src -name '\*.js' -type f -delete
-  - find src -name '\*.d.ts' -type f -delete
+    - find src -name '\*.js' -type f -delete
+    - find src -name '\*.d.ts' -type f -delete
 
 - https://picsum.photos/ cool random image generator
 - https://logo.com/editor/colors logo + favicon
