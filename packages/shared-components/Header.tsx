@@ -54,8 +54,11 @@ export function Header() {
           </HeaderButton>
           <HeaderButton
             onClick={() => {
-              console.log(import.meta.env.VITE_PRIVATE_CLIENT_URL);
-              window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/create-blog`;
+              if (isUserLoggedIn) {
+                window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/create-blog`;
+              } else {
+                navigate('/login', { replace: true });
+              }
               // navigate('/create-blog', { replace: true });
             }}
           >

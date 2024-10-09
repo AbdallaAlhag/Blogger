@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
+import ContentLoader from 'react-content-loader';
 
 // eslint-disable-next-line react/prop-types
 const PostCardLoader: React.FC<{ isLarge: boolean }> = ({ isLarge }) => {
@@ -25,8 +25,6 @@ type PostCardProps = {
   id: string;
   title: string;
   content: string;
-  author: string;
-  createdAt: string;
   image: string;
   isLarge?: boolean;
 };
@@ -35,8 +33,6 @@ const PostCard: React.FC<PostCardProps> = ({
   id,
   title,
   content,
-  author,
-  createdAt,
   image,
   isLarge = false,
 }) => {
@@ -86,8 +82,6 @@ PostCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   isLarge: PropTypes.bool,
 };

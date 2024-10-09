@@ -13,7 +13,7 @@ export const createPost = async (req: Request, res: Response) => {
   const image = req.file;
   const token = req.headers.authorization?.split(' ')?.[1];
 
-  console.log(`Received token: ${token}`);
+  // console.log(`Received token: ${token}`);
 
   if (!token) {
     res.status(401).json({ message: 'No token provided' });

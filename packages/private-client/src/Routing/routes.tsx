@@ -12,22 +12,44 @@ import {
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import ProtectedRoute from '../middleware/ProtectedRoute';
 
+// Private pages include create-blog and edit blog are not accessible from public client and while the rest redirect back to public client
+const goToPublic = (path: string) => {
+  console.log(import.meta.env.VITE_PUBLIC_CLIENT_URL);
+  window.location.href = `${import.meta.env.VITE_PUBLIC_CLIENT_URL}${path}`;
+};
+
 const routes = [
   {
     path: '/',
     element: <HomePage />,
+    loader: () => {
+      goToPublic('/');
+      return null;
+    },
   },
   {
     path: '/article/:id',
     element: <ArticlePage />,
+    loader: () => {
+      goToPublic('/article/:id');
+      return null;
+    },
   },
   {
     path: '/login',
     element: <LoginPage />,
+    loader: () => {
+      goToPublic('/login');
+      return null;
+    },
   },
   {
     path: '/signup',
     element: <SignUpPage />,
+    loader: () => {
+      goToPublic('/signup');
+      return null;
+    },
   },
   {
     // Catch-all route for 404 errors
@@ -45,6 +67,10 @@ const routes = [
   {
     path: '/blog',
     element: <BlogPage />,
+    loader: () => {
+      goToPublic('/blog');
+      return null;
+    },
   },
 ];
 

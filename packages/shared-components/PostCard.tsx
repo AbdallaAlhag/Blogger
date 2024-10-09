@@ -21,19 +21,10 @@ type PostCardProps = {
   id: string;
   title: string;
   content: string;
-  author: string;
-  createdAt: string;
   image: string;
 };
 
-const PostCard: React.FC<PostCardProps> = ({
-  id,
-  title,
-  content,
-  author,
-  createdAt,
-  image,
-}) => {
+const PostCard: React.FC<PostCardProps> = ({ id, title, content, image }) => {
   const [loading, setLoading] = useState(true); // Local loading state
 
   return (
@@ -75,8 +66,6 @@ PostCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
 };
 
