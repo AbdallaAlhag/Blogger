@@ -1,8 +1,7 @@
 import { HeaderButton } from '@shared';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SignUpPage() {
   const [name, setName] = useState('');
@@ -10,49 +9,48 @@ export default function SignUpPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the sign-up logic
-    console.log('Sign-up attempted with:', {
-      name,
-      email,
-      password,
-      confirmPassword,
-    });
+    setError(null); // Clear any existing errors
 
-    if (!username || !email || !password || !confirmPassword) {
-      console.log('Please fill in all fields');
+    if (!name || !username || !email || !password || !confirmPassword) {
+      setError('Please fill in all fields');
       return;
     }
 
     if (password !== confirmPassword) {
-      console.log('Passwords do not match');
+      setError('Passwords do not match');
       return;
     }
 
-    axios
-      .post(`${baseURL}/auth/signup`, {
+    try {
+      const res = await axios.post(`${baseURL}/auth/signup`, {
         username,
         name,
         email,
         password,
         confirmPassword,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log('Signed up successfully');
-          navigate('/login', { replace: true });
-        } else {
-          console.log('Sign-up failed', res);
-        }
-      })
-      .catch((err) => {
-        console.log('Sign-up failed', err);
       });
+      if (res.status === 200) {
+        console.log('Signed up successfully');
+        navigate('/login', { replace: true });
+      } else {
+        setError('Sign-up failed. Please try again.');
+      }
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        setError(
+          err.response.data.message || 'Sign-up failed. Please try again.'
+        );
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    }
   };
 
   return (
@@ -76,6 +74,14 @@ export default function SignUpPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          {error && (
+            <div
+              className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
+              <span className="block sm:inline">{error}</span>
+            </div>
+          )}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label

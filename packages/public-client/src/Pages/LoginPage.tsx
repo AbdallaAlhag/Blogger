@@ -7,33 +7,42 @@ import { useNavigate } from 'react-router-dom';
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
   const navigate = useNavigate(); // Hook to programmatically navigate
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the login logic
-    axios
-      .post(`${baseURL}/auth/login`, { username, password })
-      .then((res) => {
-        if (res.status === 200) {
-          // Successfully logged in
-          console.log('Successfully logged in');
-          // how does it now where dashboard is?
-          // Assuming the server returns a token in the response
-          const token = res.data.token;
+    setError(null); // Clear any existing errors
 
-          // Save token to localStorage
-          localStorage.setItem('token', token); // Or use sessionStorage or cookies
-          navigate('/', { replace: true }); // Redirect to dashboard after login
-        } else {
-          console.log('Login failed');
-        }
-      })
-      .catch((err) => {
-        console.log('Login failed', err);
+    if (!username || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    try {
+      const res = await axios.post(`${baseURL}/auth/login`, {
+        username,
+        password,
       });
+      if (res.status === 200) {
+        const token = res.data.token;
+        localStorage.setItem('token', token);
+        navigate('/', { replace: true });
+      } else {
+        setError('Login failed. Please try again.');
+      }
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        setError(
+          err.response.data.message || 'Login failed. Please try again.'
+        );
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    }
   };
 
   const handleGuestLogin = () => {
@@ -52,11 +61,13 @@ export default function LoginPage() {
           console.log('Successfully logged in');
           navigate('/', { replace: true });
         } else {
+          setError('Guest login failed. Please try again.');
           console.log('Login failed');
         }
       })
       .catch((err) => {
         console.log('Login failed', err);
+        setError('Guest login failed. Please try again.');
       });
   };
   return (
@@ -80,6 +91,14 @@ export default function LoginPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          {error && (
+            <div
+              className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
+              <span className="block sm:inline">{error}</span>
+            </div>
+          )}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label

@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Moon, Sun } from 'lucide-react';
 import { HeaderButton } from './HeaderButton';
 import { Link } from 'react-router-dom';
-// import Logo from '../public-client/public/blogger-high-resolution-logo.png'; // Adjust path if necessary
 
 export function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -15,10 +12,7 @@ export function Header() {
   useEffect(() => {
     setIsUserLoggedIn(isAuthenticated());
   }, []);
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // Here you would typically implement the actual theme switching logic
-  };
+
   return (
     <header className="bg-background shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -33,18 +27,6 @@ export function Header() {
           </HeaderButton>
         </div>
         <div className="flex items-center space-x-4">
-          <HeaderButton
-            variant="ghost"
-            size="default"
-            onClick={toggleDarkMode}
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
-          </HeaderButton>
           <HeaderButton
             onClick={() => {
               navigate('/blog');

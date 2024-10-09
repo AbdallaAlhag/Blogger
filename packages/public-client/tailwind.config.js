@@ -6,6 +6,7 @@ export default {
     '../shared-components/**/*.{js,jsx,ts,tsx}',
     '../public-client/src/**/*.{js,jsx,ts,tsx}',
   ],
+  darkMode: 'class', // Enables class-based dark mode
   theme: {
     extend: {},
   },

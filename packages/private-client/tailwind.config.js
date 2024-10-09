@@ -5,6 +5,7 @@ export const content = [
   '../shared-components/**/*.{js,jsx,ts,tsx}',
   '../public-client/src/**/*.{js,jsx,ts,tsx}',
 ];
+export const darkMode = 'class';
 export const theme = {
   extend: {},
 };

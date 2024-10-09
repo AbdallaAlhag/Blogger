@@ -37,6 +37,8 @@ First time using:
     ❌ Allow users to edit their own posts
     ❌ Validate login and signup form and showcase errors
     ❌ Add comments count to PostCard components
+    ❌ Add TinyMCE editor to create blog 
+
 
 # Monorepop set up:
 
