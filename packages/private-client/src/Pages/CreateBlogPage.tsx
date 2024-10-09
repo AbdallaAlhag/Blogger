@@ -29,11 +29,18 @@ export default function CreateBlogPost() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(baseURL)
+    console.log(baseURL);
 
-    // Validate that all necessary fields are provided
     if (!title || !content) {
       console.error('Title and content are required.');
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    console.log(`Token: ${token}`);
+    if (!token) {
+      console.error('User not logged in');
+      navigate('/login');
       return;
     }
 
@@ -42,7 +49,6 @@ export default function CreateBlogPost() {
     formData.append('content', content);
     formData.append('authorId', localStorage.getItem('authorId') || '');
 
-    // Only append the image if it exists
     if (image) {
       formData.append('image', image);
     }
@@ -51,14 +57,22 @@ export default function CreateBlogPost() {
       .post(`${baseURL}/posts`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
         console.log('Created blog post:', res.data);
-        navigate('/login', { replace: true });
+        navigate('/', { replace: true });
       })
       .catch((err) => {
         console.error('Error creating blog post:', err);
+        if (err.response && err.response.status === 401) {
+          console.error('Authentication failed. Please log in again.');
+          localStorage.removeItem('token');
+          navigate('/login');
+        } else {
+          console.error('Error creating blog post:', err);
+        }
       });
   };
 

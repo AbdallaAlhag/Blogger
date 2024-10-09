@@ -27,11 +27,13 @@ First time using:
     ✅ Work on comments section components for article pages
         ✅ Create comment MVC that attaches comments to posts id
     ❌ Link sign up and login to redirect to the private client and logout redirects to public client
+      ❌ Fix issue with redirecting to private client but not redirecting to public client
     ✅ Create auth and login/signup pages
         ✅ Allow users to sign up and log in
         ✅ Implement passport to authenticate users
         ✅ Use JWT for auth
-    ❌ Create Post blog page
+    ✅ Create Post blog page
+    ✅ Create all blogs page with pagination and sorting
     ❌ Allow users to edit their own posts
     ❌ Validate login and signup form and showcase errors
     ❌ Add comments count to PostCard components

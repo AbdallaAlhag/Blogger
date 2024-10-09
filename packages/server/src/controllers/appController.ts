@@ -6,54 +6,62 @@ import {
   getPostById,
   createSingleComment,
 } from '../db/queries';
-import path from 'path';
-import multer from 'multer';
+import jwt from 'jsonwebtoken';
 
-// Set up multer for handling file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads/');
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(
-      null,
-      file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname)
-    );
-  },
-});
+export const createPost = async (req: Request, res: Response) => {
+  const { title, content } = req.body;
+  const image = req.file;
+  const token = req.headers.authorization?.split(' ')?.[1];
 
-const upload = multer({ storage: storage });
+  console.log(`Received token: ${token}`);
 
-export const createPost = [
-  upload.single('image'), // Middleware to handle file upload
-  async (req: Request, res: Response) => {
-    const { title, content, authorId } = req.body;
-    const image = req.file;
+  if (!token) {
+    res.status(401).json({ message: 'No token provided' });
+    return;
+  }
 
-    try {
-      let imagePath: string;
+  const secret = process.env.JWT_SECRET || 'a santa cat';
 
-      if (image) {
-        imagePath = image.path; // Multer already saved the file, so we just need the path
-      } else {
-        imagePath = 'default-image.png';
-      }
-
-      const post = await createSinglePost(
-        title,
-        content,
-        imagePath, // Store image path in DB
-        authorId
-      );
-
-      res.json(post);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error creating post' });
+  try {
+    interface DecodedToken {
+      id: string;
     }
-  },
-];
+
+    const decoded = jwt.verify(token, secret) as unknown as DecodedToken;
+
+    console.log(`Decoded token: ${JSON.stringify(decoded)}`);
+
+    if (!(decoded && 'id' in decoded)) {
+      throw new Error('Token verification failed or missing id');
+    }
+
+    const authorId = decoded.id;
+
+    if (!title || !content) {
+      res.status(400).json({ message: 'Missing required fields' });
+      return;
+    }
+
+    let imagePath: string;
+
+    if (image) {
+      imagePath = image.path;
+    } else {
+      imagePath = 'default-image.png';
+    }
+
+    await createSinglePost(title, content, imagePath, authorId);
+
+    res.status(201).json({ message: 'Post created successfully!' });
+  } catch (error) {
+    console.error(error);
+    if (error instanceof jwt.JsonWebTokenError) {
+      res.status(401).json({ message: 'Invalid token' });
+    } else {
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  }
+};
 
 export const getPosts = async (req: Request, res: Response) => {
   try {

@@ -58,15 +58,17 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <HeaderButton variant="ghost">
-          <Link to="/">
-            <img
-              src="/blogger-high-resolution-logo.png"
-              alt="Blogger logo"
-              className="h-16 max-w-full w-auto transition-transform duration-200 transform hover:scale-105"
-            />
-          </Link>
-        </HeaderButton>
+        <div className="flex items-center justify-center">
+          <HeaderButton variant="ghost">
+            <Link to="/">
+              <img
+                src="/blogger-high-resolution-logo.png"
+                alt="Blogger logo"
+                className="h-16 max-w-full w-auto transition-transform duration-200 transform hover:scale-105"
+              />
+            </Link>
+          </HeaderButton>
+        </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Create your account
         </h2>
