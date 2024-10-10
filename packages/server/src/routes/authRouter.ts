@@ -1,18 +1,13 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { signUp, login, loginAsGuest } from '../controllers/authController';
-// import {
-//   signupValidationRules,
-//   validateSignup,
-// } from '../middleware/validateSignup';
+import {
+  signupValidationRules,
+  validateSignup,
+} from '../middleware/validateSignup';
 
 const router: Router = express.Router();
 
-router.post(
-  '/signup',
-  // signupValidationRules,
-  // validateSignup,
-  signUp
-);
+router.post('/signup', signupValidationRules, validateSignup, signUp);
 
 // router.post('/login', login);
 router.post('/login', (req: Request, res: Response, next: NextFunction) => {

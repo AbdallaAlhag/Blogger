@@ -35,10 +35,10 @@ First time using:
     ✅ Create Post blog page
     ✅ Create all blogs page with pagination and sorting
     ❌ Allow users to edit their own posts
-    ❌ Validate login and signup form and showcase errors
+    ✅ Validate front end login and signup form and showcase errors
+    ❌ Validate back end signup form and showcase errors
     ❌ Add comments count to PostCard components
-    ❌ Add TinyMCE editor to create blog 
-
+    ❌ Add TinyMCE editor to create blog
 
 # Monorepop set up:
 

@@ -24,9 +24,13 @@ export const signUp = async (
       },
     });
 
-    res.status(200).json({ message: 'Successfully Signed up', user });
+    res
+      .status(200)
+      .json({ success: true, message: 'Successfully Signed up', user });
   } catch (err) {
-    next(err);
+    if (!res.headersSent) {
+      next(err); // Passes the error to the error handler only if headers aren't sent
+    }
   }
 };
 // // basic login

@@ -36,17 +36,39 @@ export default function SignUpPage() {
         password,
         confirmPassword,
       });
-      if (res.status === 200) {
+      console.log('Full response:', res); // Add this line
+
+      // if (res.status === 200) {
+      if (res.data && res.data.success) {
         console.log('Signed up successfully');
         navigate('/login', { replace: true });
+      } else if (res.status === 400 && res.data.errors) {
+        const errorObject = res.data.errors;
+        setError(Object.values(errorObject).join(', ').replace(/,/g, ', '));
       } else {
-        setError('Sign-up failed. Please try again.');
+        setError('Sign-up failed. Please try again. some type of bad request');
       }
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
-        setError(
-          err.response.data.message || 'Sign-up failed. Please try again.'
-        );
+        console.log('Error response data:', err.response.data);
+
+        const validationErrors = err.response.data;
+        console.log(validationErrors);
+        if (
+          validationErrors &&
+          typeof validationErrors === 'object' &&
+          validationErrors.errors
+        ) {
+          const errorMessages = Object.values(validationErrors.errors)
+            .map((msg) => String(msg)) // Convert `msg` to a string explicitly
+            .join('<br />'); // Join messages with a newline
+
+          setError(errorMessages); // Display the combined error messages
+        }
+        // If no specific error information is available
+        else {
+          setError('Sign-up failed. Please try again. catch caught error');
+        }
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
@@ -74,13 +96,20 @@ export default function SignUpPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          {error && (
+          {/* {error && (
             <div
               className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
               role="alert"
             >
-              <span className="block sm:inline">{error}</span>
+              <span className="block sm:inline"></span>
             </div>
+          )} */}
+          {error && (
+            <div
+              className="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+              dangerouslySetInnerHTML={{ __html: error }} // Display error messages with line breaks
+            />
           )}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
