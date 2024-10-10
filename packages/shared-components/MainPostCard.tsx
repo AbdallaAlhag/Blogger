@@ -38,6 +38,17 @@ const PostCard: React.FC<PostCardProps> = ({
   isLarge = false,
 }) => {
   const [loading, setLoading] = useState(true);
+  const imagePath = image.slice(8);
+  // console.log(imagePath);
+  const imageUrl =
+    image === 'default-image.png'
+      ? isLarge
+        ? `https://picsum.photos/seed/${id}/1000/610`
+        : `https://picsum.photos/seed/${id}/500/300`
+      : isLarge
+        ? `http://localhost:3000/uploads/${imagePath}?w=1000&h=610`
+        : `http://localhost:3000/uploads/${imagePath}?w=500&h=300`;
+  // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
 
   return (
     <div className="relative overflow-hidden rounded-lg shadow-lg hover:transition hover:duration-100 hover:ease-in-out hover:translate-y-[-5px] hover:opacity-90">
@@ -45,15 +56,7 @@ const PostCard: React.FC<PostCardProps> = ({
       {/* Pass isLarge to Loader */}
       <img
         className="w-full h-full object-cover"
-        src={
-          image === 'default-image.png'
-            ? isLarge
-              ? `https://picsum.photos/seed/${id}/1000/610`
-              : `https://picsum.photos/seed/${id}/500/300`
-            : isLarge
-              ? `${image}?w=1000&h=610`
-              : `${image}?w=500&h=300`
-        }
+        src={imageUrl}
         alt={title}
         onLoad={() => setLoading(false)}
       />

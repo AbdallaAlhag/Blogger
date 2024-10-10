@@ -7,7 +7,6 @@ import {
   createSingleComment,
 } from '../db/queries';
 import jwt from 'jsonwebtoken';
-import sanitizeHtml from 'sanitize-html';
 
 export const createPost = async (req: Request, res: Response) => {
   const { title, content } = req.body;

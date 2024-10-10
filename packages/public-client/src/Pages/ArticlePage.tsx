@@ -62,6 +62,14 @@ const ArticlePage: React.FC = () => {
     return <div>No post found</div>;
   }
 
+  const imagePath = post.image.slice(8);
+  // console.log(imagePath);
+  const imageUrl =
+    post.image === 'default-image.png'
+      ? `https://picsum.photos/seed/${id}/1200/675`
+      : // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
+        `http://localhost:3000/uploads/${imagePath}`;
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -72,11 +80,7 @@ const ArticlePage: React.FC = () => {
             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 ${
               loading ? 'opacity-0' : 'opacity-100'
             }`}
-            src={
-              post.image === 'default-image.png'
-                ? `https://picsum.photos/seed/${id}/1200/675`
-                : post.image
-            }
+            src={imageUrl}
             alt={post.image}
             onLoad={() => setLoading(false)}
           />

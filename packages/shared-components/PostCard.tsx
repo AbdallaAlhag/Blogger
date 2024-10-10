@@ -35,18 +35,21 @@ const PostCard: React.FC<PostCardProps> = ({
   comments,
 }) => {
   const [loading, setLoading] = useState(true); // Local loading state
+  const imagePath = image.slice(8);
+  // console.log(imagePath);
+  const imageUrl =
+    image === 'default-image.png'
+      ? `https://picsum.photos/seed/${id}/500/300`
+      : // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
+        `http://localhost:3000/uploads/${imagePath}`;
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden  hover:transition hover:duration-100 hover:ease-in-out hover:translate-y-[-5px] hover:opacity-90">
       <div className="p-0">
         {loading && <PostCardLoader />}
         <img
-          className="w-full object-cover mb-4 rounded-t-lg"
-          src={
-            image === 'default-image.png'
-              ? `https://picsum.photos/seed/${id}/500/300`
-              : image
-          }
+          className="w-full object-cover mb-4 rounded-t-lg h-[300px]"
+          src={imageUrl}
           alt="Post image"
           onLoad={() => setLoading(false)} // Hide loader when image loads
         />
@@ -61,7 +64,11 @@ const PostCard: React.FC<PostCardProps> = ({
             </div>
           </h2>
           <p className="text-gray-600 mb-4">
-            {parse(content.split(' ').slice(0, 15).join(' '))}...
+            {content.split(' ').length > 15 ? (
+              <>{parse(content.split(' ').slice(0, 15).join(' '))}...</>
+            ) : (
+              parse(content)
+            )}
           </p>
           <div className="flex justify-between items-center text-sm text-gray-500 gap">
             {/* <span>{author}</span>

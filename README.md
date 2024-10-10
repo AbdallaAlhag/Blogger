@@ -43,7 +43,7 @@ First time using:
       ✅ Added cookies instead of local storage to ease transfering of local storage between public and private client
     ✅ Check out authorID in form for create blog post
     ✅ Fix post format html bug from TinyMCE editor
-    ❌ Fix image upload bug
+    ✅ Fix image upload bug, saved it from my server: http://localhost:3000/uploads/ Probably change that later
 
 # Monorepop set up:
 

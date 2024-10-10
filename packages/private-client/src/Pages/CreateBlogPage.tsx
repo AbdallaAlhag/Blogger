@@ -50,7 +50,6 @@ export default function CreateBlogPost() {
     formData.append('title', title);
     formData.append('content', content.trim());
 
-
     if (image) {
       formData.append('image', image);
     }
@@ -150,6 +149,9 @@ export default function CreateBlogPost() {
                 </div>
                 <p className="text-xs text-gray-500">
                   PNG, JPG, GIF up to 10MB
+                </p>
+                <p className="text-xs text-gray-500">
+                  ~ 2048 x 1536 pixels preferred ~
                 </p>
               </div>
             </div>
