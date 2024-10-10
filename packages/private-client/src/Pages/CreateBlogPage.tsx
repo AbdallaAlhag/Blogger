@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Header, Footer } from '@shared';
+import { Header, Footer, BlogPostEditor } from '@shared';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 
 export default function CreateBlogPost() {
   const [title, setTitle] = useState('');
@@ -98,8 +99,8 @@ export default function CreateBlogPost() {
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-4"
             />
           </div>
-
-          <div>
+          {/* content Part */}
+          {/* <div>
             <label
               htmlFor="content"
               className="block text-sm font-bold text-gray-700"
@@ -114,7 +115,11 @@ export default function CreateBlogPost() {
               rows={10}
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 resize-none p-4"
             />
-          </div>
+          </div> */}
+          <BlogPostEditor
+            initialContent={content}
+            onContentChange={setContent}
+          />
 
           <div>
             <label className="block text-sm font-bold text-gray-700">

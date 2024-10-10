@@ -11,4 +11,5 @@ declare module '@shared' {
   export { HeaderButton } from '../../shared-components/HeaderButton';
   export { MainPostCard } from '../../shared-components/MainPostCard';
   export { CommentSection } from '../../shared-components/CommentSection';
+  export { BlogPostEditor } from '../../shared-components/BlogPostEditor';
 }

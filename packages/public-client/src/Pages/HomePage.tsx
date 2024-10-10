@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
         }));
         // console.log(data);
         setPosts(updatedPosts);
-        console.log(updatedPosts);
+        // console.log(updatedPosts);
         setIsLoading(false);
       })
       .catch((error) => {

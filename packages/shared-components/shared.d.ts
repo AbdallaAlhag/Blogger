@@ -13,6 +13,7 @@ declare module '@shared' {
   export { MainPostCard } from './MainPostCard';
   export { HeaderButton } from './HeaderButton';
   export { CommentSection } from './CommentSection';
+  export { BlogPostEditor } from './BlogPostEditor';
 }
 
 // import React from 'react';

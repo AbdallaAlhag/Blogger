@@ -7,3 +7,4 @@ export { default as PostCard } from './PostCard';
 export { default as MainPostCard } from './MainPostCard';
 export { HeaderButton } from './HeaderButton';
 export { CommentSection } from './CommentSection';
+export { default as BlogPostEditor } from './BlogPostEditor';

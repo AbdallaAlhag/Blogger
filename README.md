@@ -39,6 +39,7 @@ First time using:
     ✅ Validate back end signup form and showcase errors
     ✅ Add comments count to PostCard components
     ❌ Add TinyMCE editor to create blog
+    ❌ sligh problem directing to create blog page from public and also when publishing the artciles
 
 # Monorepop set up:
 
