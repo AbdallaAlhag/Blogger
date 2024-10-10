@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 interface BlogPostEditorProps {
@@ -13,6 +13,11 @@ export default function BlogPostEditor({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [content, setContent] = useState(initialContent);
 
+  useEffect(() => {
+    if (initialContent !== content) {
+      setContent(initialContent);
+    }
+  }, [initialContent]);
   const handleEditorChange = (content: string) => {
     setContent(content);
     onContentChange(content);
@@ -62,6 +67,12 @@ export default function BlogPostEditor({
           content_style:
             'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
           directionality: 'ltr',
+          forced_root_block: 'p',
+          remove_trailing_brs: true,
+          branding: false,
+          elementpath: false,
+          convert_urls: false,
+          entity_encoding: 'raw',
         }}
         onEditorChange={handleEditorChange}
       />

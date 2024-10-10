@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import { MessageCircle } from 'lucide-react';
+import parse from 'html-react-parser';
 
 const PostCardLoader = (props: IContentLoaderProps) => (
   <ContentLoader
@@ -60,7 +61,7 @@ const PostCard: React.FC<PostCardProps> = ({
             </div>
           </h2>
           <p className="text-gray-600 mb-4">
-            {content.split(' ').slice(0, 15).join(' ')}...
+            {parse(content.split(' ').slice(0, 15).join(' '))}...
           </p>
           <div className="flex justify-between items-center text-sm text-gray-500 gap">
             {/* <span>{author}</span>

@@ -4,6 +4,7 @@ import { Header, Footer, CommentSection } from '@shared';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 const ImageLoader = (props: IContentLoaderProps) => (
   <ContentLoader
@@ -92,7 +93,7 @@ const ArticlePage: React.FC = () => {
               key={index}
               className="mb-4  max-w-screen-small sm:max-w-screen-2xl leading-relaxed text-justify"
             >
-              {paragraph}
+              {parse(paragraph)}
             </p>
           ))}
         </div>

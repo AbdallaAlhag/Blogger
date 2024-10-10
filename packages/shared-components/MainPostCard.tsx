@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ContentLoader from 'react-content-loader';
+import parse from 'html-react-parser';
 
 // eslint-disable-next-line react/prop-types
 const PostCardLoader: React.FC<{ isLarge: boolean }> = ({ isLarge }) => {
@@ -64,7 +65,7 @@ const PostCard: React.FC<PostCardProps> = ({
             {title}
           </h2>{' '}
           <p className="text-sm text-gray-200 mb-4">
-            {content.split(' ').slice(0, 15).join(' ')}...
+            {parse(content.split(' ').slice(0, 15).join(' '))}...
           </p>
           <Link
             to={`/article/${id}`}

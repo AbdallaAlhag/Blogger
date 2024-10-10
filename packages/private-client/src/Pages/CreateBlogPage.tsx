@@ -48,9 +48,8 @@ export default function CreateBlogPost() {
 
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('content', content);
-    // I gotta check this out
-    formData.append('authorId', localStorage.getItem('authorId') || '');
+    formData.append('content', content.trim());
+
 
     if (image) {
       formData.append('image', image);
@@ -102,23 +101,7 @@ export default function CreateBlogPost() {
               className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-4"
             />
           </div>
-          {/* content Part */}
-          {/* <div>
-            <label
-              htmlFor="content"
-              className="block text-sm font-bold text-gray-700"
-            >
-              Content
-            </label>
-            <textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-              rows={10}
-              className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 resize-none p-4"
-            />
-          </div> */}
+
           <BlogPostEditor
             initialContent={content}
             onContentChange={setContent}
