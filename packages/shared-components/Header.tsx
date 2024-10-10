@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HeaderButton } from './HeaderButton';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export function Header() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  const isAuthenticated = () => !!localStorage.getItem('token'); // returns true if token exists
-
+  // const isAuthenticated = () => !!localStorage.getItem('token'); // returns true if token exists
+  const isAuthenticated = () => !!Cookies.get('token'); // returns true if token exists
   useEffect(() => {
     setIsUserLoggedIn(isAuthenticated());
   }, []);
@@ -49,7 +50,8 @@ export function Header() {
           {isUserLoggedIn ? (
             <HeaderButton
               onClick={() => {
-                localStorage.removeItem('token');
+                // localStorage.removeItem('token');
+                Cookies.remove('token');
                 setIsUserLoggedIn(false);
                 navigate('/login', { replace: true });
               }}

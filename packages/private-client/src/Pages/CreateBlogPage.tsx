@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { Header, Footer, BlogPostEditor } from '@shared';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Cookies from 'js-cookie';
 
 export default function CreateBlogPost() {
   const [title, setTitle] = useState('');
@@ -37,7 +37,8 @@ export default function CreateBlogPost() {
       return;
     }
 
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     console.log(`Token: ${token}`);
     if (!token) {
       console.error('User not logged in');
@@ -48,6 +49,7 @@ export default function CreateBlogPost() {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
+    // I gotta check this out
     formData.append('authorId', localStorage.getItem('authorId') || '');
 
     if (image) {
@@ -69,7 +71,8 @@ export default function CreateBlogPost() {
         console.error('Error creating blog post:', err);
         if (err.response && err.response.status === 401) {
           console.error('Authentication failed. Please log in again.');
-          localStorage.removeItem('token');
+          // localStorage.removeItem('token');
+          Cookies.remove('token');
           navigate('/login');
         } else {
           console.error('Error creating blog post:', err);

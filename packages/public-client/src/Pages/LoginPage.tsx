@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -29,7 +30,8 @@ export default function LoginPage() {
       });
       if (res.status === 200) {
         const token = res.data.token;
-        localStorage.setItem('token', token);
+        // localStorage.setItem('token', token);
+        Cookies.set('token', token, { expires: 1 });
         navigate('/', { replace: true });
       } else {
         setError('Login failed. Please try again.');
@@ -57,7 +59,8 @@ export default function LoginPage() {
           const token = res.data.token;
 
           // Save token to localStorage
-          localStorage.setItem('token', token); // Or use sessionStorage or cookies
+          // localStorage.setItem('token', token); // Or use sessionStorage or cookies
+          Cookies.set('token', token, { expires: 1 });
           console.log('Successfully logged in');
           navigate('/', { replace: true });
         } else {

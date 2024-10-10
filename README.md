@@ -38,8 +38,10 @@ First time using:
     ✅ Validate front end login and signup form and showcase errors
     ✅ Validate back end signup form and showcase errors
     ✅ Add comments count to PostCard components
-    ❌ Add TinyMCE editor to create blog
-    ❌ sligh problem directing to create blog page from public and also when publishing the artciles
+    ✅ Add TinyMCE editor to create blog
+    ✅ slight problem directing to create blog page from public and also when publishing the articles
+      ✅ Added cookies instead of local storage to ease transfering of local storage between public and private client
+    ❌ Check out authorID in form for create blog post
 
 # Monorepop set up:
 
