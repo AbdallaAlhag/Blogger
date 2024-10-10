@@ -16,8 +16,10 @@ const HomePage: React.FC = () => {
     author: { name: string };
     createdAt: string;
     image: string;
+    _count: {
+      comments: number;
+    };
   }
-
   useEffect(() => {
     axios
       .get(`${baseURL}/posts`)
@@ -28,6 +30,7 @@ const HomePage: React.FC = () => {
         }));
         // console.log(data);
         setPosts(updatedPosts);
+        console.log(updatedPosts);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -90,6 +93,7 @@ const HomePage: React.FC = () => {
                   author={post.author.name}
                   createdAt={post.createdAt}
                   image={post.image}
+                  comments={post._count.comments}
                 />
               </div>
             ))

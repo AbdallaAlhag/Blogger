@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
+import { MessageCircle } from 'lucide-react';
 
 const PostCardLoader = (props: IContentLoaderProps) => (
   <ContentLoader
@@ -22,9 +23,16 @@ type PostCardProps = {
   title: string;
   content: string;
   image: string;
+  comments: number;
 };
 
-const PostCard: React.FC<PostCardProps> = ({ id, title, content, image }) => {
+const PostCard: React.FC<PostCardProps> = ({
+  id,
+  title,
+  content,
+  image,
+  comments,
+}) => {
   const [loading, setLoading] = useState(true); // Local loading state
 
   return (
@@ -42,7 +50,15 @@ const PostCard: React.FC<PostCardProps> = ({ id, title, content, image }) => {
           onLoad={() => setLoading(false)} // Hide loader when image loads
         />
         <div className="px-6 py-0">
-          <h2 className="text-xl font-semibold mb-2">{title}</h2>
+          <h2 className="text-xl font-semibold mb-2 items-center flex justify-between">
+            {title}
+            <div className="flex items-center">
+              <MessageCircle size={20} className="text-gray-500 mr-2" />
+              {comments && (
+                <span className="text-gray-500 ml-2">{comments}</span>
+              )}
+            </div>
+          </h2>
           <p className="text-gray-600 mb-4">
             {content.split(' ').slice(0, 15).join(' ')}...
           </p>
@@ -67,6 +83,7 @@ PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  comments: PropTypes.number.isRequired,
 };
 
 export default PostCard;

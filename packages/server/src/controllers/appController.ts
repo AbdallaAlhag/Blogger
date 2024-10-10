@@ -29,7 +29,7 @@ export const createPost = async (req: Request, res: Response) => {
 
     const decoded = jwt.verify(token, secret) as unknown as DecodedToken;
 
-    console.log(`Decoded token: ${JSON.stringify(decoded)}`);
+    // console.log(`Decoded token: ${JSON.stringify(decoded)}`);
 
     if (!(decoded && 'id' in decoded)) {
       throw new Error('Token verification failed or missing id');
@@ -67,6 +67,7 @@ export const getPosts = async (req: Request, res: Response) => {
   try {
     const post = await getHomePosts();
     res.json(post);
+    // console.log(post);
   } catch (error) {
     console.error(error);
   }

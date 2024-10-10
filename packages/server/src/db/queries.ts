@@ -9,7 +9,20 @@ export async function getHomePosts() {
         createdAt: 'desc',
       },
       // where: { published: true },
-      include: { author: { select: { id: true, name: true, email: true } } },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            comments: true,
+          },
+        },
+      },
     });
     return allPosts;
   } catch (error) {
@@ -24,7 +37,20 @@ export async function getAllPosts() {
         createdAt: 'desc',
       },
       // where: { published: true },
-      include: { author: { select: { id: true, name: true, email: true } } },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            comments: true,
+          },
+        },
+      },
     });
     return allPosts;
   } catch (error) {
