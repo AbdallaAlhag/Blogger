@@ -28,7 +28,7 @@ model Post {
   title     String
   content   String
   image     String    @default("default-image.png") // Adding a default value
-  published Boolean   @default(false)
+  published Boolean   @default(true)
   author    User      @relation(fields: [authorId], references: [id])
   authorId  String
   comments  Comment[]

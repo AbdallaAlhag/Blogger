@@ -1,10 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Header, Footer, CommentSection } from '@shared';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
+import { jwtDecode } from 'jwt-decode';
+import Cookies from 'js-cookie';
 
 const ImageLoader = (props: IContentLoaderProps) => (
   <ContentLoader
@@ -26,11 +28,12 @@ const ArticlePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true); // Local loading state
+  const navigate = useNavigate();
   interface BlogPost {
     id: string;
     title: string;
     content: string;
-    author: { name: string };
+    author: { name: string; id: string };
     createdAt: string;
     image: string;
     comments: Comment[];
@@ -49,6 +52,29 @@ const ArticlePage: React.FC = () => {
         setIsLoading(false);
       });
   }, [baseURL, id]);
+
+  const unpublishPost = async (id: string) => {
+    try {
+      await axios.patch(`${baseURL}/posts/${id}`);
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error('Error publishing post:', error);
+    }
+  };
+
+  function confirmUserPost(postId: string, authorId: string) {
+    const token = Cookies.get('token');
+    if (postId && authorId && token) {
+      // check if user is logged in and check if post.author.id = user id
+      const decoded = jwtDecode(token);
+      if (decoded && 'id' in decoded) {
+        if (decoded.id === authorId) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -110,6 +136,27 @@ const ArticlePage: React.FC = () => {
               &#8617; Back
             </button>
           </Link>
+          {confirmUserPost(post.id, post.author.id) && (
+            <>
+              <button
+                type="button"
+                className="text-white bg-purple-700 hover:bg-purple-900 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-purple-500 font-medium rounded-lg text-sm px-5 py-2.5 ml-1 text-center inline-flex items-center"
+                onClick={() => {
+                  if (id) {
+                    unpublishPost(id);
+                  }
+                }}
+              >
+                &#128683; Unpublish
+              </button>
+              <button
+                type="button"
+                className="text-white bg-green-700 hover:bg-green-900 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 ml-1 text-center inline-flex items-center"
+              >
+                &#9998; Edit
+              </button>
+            </>
+          )}
         </div>
         <hr className="my-12 border-gray-300" />
         <CommentSection comments={post.comments} blogId={id} />

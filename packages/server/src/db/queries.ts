@@ -8,7 +8,7 @@ export async function getHomePosts() {
       orderBy: {
         createdAt: 'desc',
       },
-      // where: { published: true },
+      where: { published: true },
       include: {
         author: {
           select: {
@@ -36,7 +36,7 @@ export async function getAllPosts() {
       orderBy: {
         createdAt: 'desc',
       },
-      // where: { published: true },
+      where: { published: true },
       include: {
         author: {
           select: {
@@ -135,6 +135,21 @@ export async function createSingleComment(
       },
     });
     return newComment;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function removePublishedPost(id: string) {
+  try {
+    await prisma.post.update({
+      where: {
+        id,
+      },
+      data: {
+        published: false,
+      },
+    });
   } catch (error) {
     console.log(error);
   }

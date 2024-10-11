@@ -5,6 +5,7 @@ import {
   createSinglePost,
   getPostById,
   createSingleComment,
+  removePublishedPost,
 } from '../db/queries';
 import jwt from 'jsonwebtoken';
 
@@ -101,5 +102,17 @@ export const createComment = async (req: Request, res: Response) => {
     res.json(comment);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const unpublishPost = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    await removePublishedPost(id);
+    // res.json(post);
+    res.status(200).json({ message: 'Post unpublished successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
   }
 };

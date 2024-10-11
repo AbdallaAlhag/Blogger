@@ -34,7 +34,6 @@ First time using:
         ✅ Use JWT for auth
     ✅ Create Post blog page
     ✅ Create all blogs page with pagination and sorting
-    ❌ Allow users to edit their own posts
     ✅ Validate front end login and signup form and showcase errors
     ✅ Validate back end signup form and showcase errors
     ✅ Add comments count to PostCard components
@@ -44,6 +43,10 @@ First time using:
     ✅ Check out authorID in form for create blog post
     ✅ Fix post format html bug from TinyMCE editor
     ✅ Fix image upload bug, saved it from my server: http://localhost:3000/uploads/ Probably change that later
+    ❌ Allow users to edit their own posts
+    ❌ work on publishing features
+    ❌ Add animation to artciles like slide in
+    ❌ Add tags?
 
 # Monorepop set up:
 

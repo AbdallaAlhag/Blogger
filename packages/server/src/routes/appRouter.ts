@@ -6,6 +6,7 @@ import {
   getSinglePost,
   createComment,
   getEveryPosts,
+  unpublishPost,
 } from '../controllers/appController';
 import { upload } from '../middleware/fileUpload';
 
@@ -15,4 +16,6 @@ router.get('/posts/:id', getSinglePost);
 
 router.post('/posts', upload.single('image'), createPost);
 router.post('/posts/:id/comments', createComment);
+
+router.patch('/posts/:id', unpublishPost);
 export default router;
