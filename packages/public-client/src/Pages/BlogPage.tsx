@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Header, Footer, PostCard } from '@shared';
+import {
+  Header,
+  Footer,
+  PostCard,
+  LoadingErrorHandler,
+  NoPostFound,
+} from '@shared';
 
 interface BlogPost {
   id: string;
@@ -80,73 +86,77 @@ const BlogPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="container flex-grow mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">All Blog Posts</h1>
-        <div className="mb-8 flex justify-end items-center">
-          <label htmlFor="sort" className="mr-2 text-gray-700">
-            Sort by:
-          </label>
-          <select
-            id="sort"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="border rounded-md px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="date">Date</option>
-            <option value="comments">Comments</option>
-            <option value="title">Title</option>
-          </select>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentPosts.length > 0 ? (
-            currentPosts.map((post: BlogPost) => (
-              <div key={post.id}>
-                <PostCard
-                  id={post.id}
-                  title={post.title}
-                  content={post.content}
-                  author={post.author.name}
-                  createdAt={post.createdAt}
-                  image={post.image}
-                  comments={post.comments.length}
-                />
-                {/* <p className="mt-2 text-sm text-gray-600">
+    <LoadingErrorHandler isLoading={isLoading} error={error}>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="container flex-grow mx-auto px-4 py-8">
+          <h1 className="text-4xl font-bold mb-8 text-center">
+            Published Blog Posts
+          </h1>
+          <div className="mb-8 flex justify-end items-center">
+            <label htmlFor="sort" className="mr-2 text-gray-700">
+              Sort by:
+            </label>
+            <select
+              id="sort"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="border rounded-md px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="date">Date</option>
+              <option value="comments">Comments</option>
+              <option value="title">Title</option>
+            </select>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentPosts.length > 0 ? (
+              currentPosts.map((post: BlogPost) => (
+                <div key={post.id}>
+                  <PostCard
+                    id={post.id}
+                    title={post.title}
+                    content={post.content}
+                    author={post.author.name}
+                    createdAt={post.createdAt}
+                    image={post.image}
+                    comments={post.comments.length}
+                  />
+                  {/* <p className="mt-2 text-sm text-gray-600">
                   Comments: {post.comments.length}
                 </p> */}
-              </div>
-            ))
-          ) : (
-            <div className="text-center col-span-3">No posts available</div>
-          )}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <nav>
-            <ul className="flex">
-              {Array.from(
-                { length: Math.ceil(sortedPosts.length / postsPerPage) },
-                (_, i) => (
-                  <li key={i}>
-                    <button
-                      onClick={() => paginate(i + 1)}
-                      className={`mx-1 px-3 py-2 rounded-md ${
-                        currentPage === i + 1
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
-                    >
-                      {i + 1}
-                    </button>
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
-        </div>
-      </main>
-      <Footer />
-    </div>
+                </div>
+              ))
+            ) : (
+              <NoPostFound />
+            )}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <nav>
+              <ul className="flex">
+                {Array.from(
+                  { length: Math.ceil(sortedPosts.length / postsPerPage) },
+                  (_, i) => (
+                    <li key={i}>
+                      <button
+                        onClick={() => paginate(i + 1)}
+                        className={`mx-1 px-3 py-2 rounded-md ${
+                          currentPage === i + 1
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    </li>
+                  )
+                )}
+              </ul>
+            </nav>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </LoadingErrorHandler>
   );
 };
 

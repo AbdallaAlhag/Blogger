@@ -32,7 +32,7 @@ export function Header() {
               navigate('/blog');
             }}
           >
-            All Blogs
+            More Blogs
           </HeaderButton>
           <HeaderButton
             onClick={() => {

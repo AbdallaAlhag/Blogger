@@ -14,6 +14,8 @@ declare module '@shared' {
   export { HeaderButton } from './HeaderButton';
   export { CommentSection } from './CommentSection';
   export { BlogPostEditor } from './BlogPostEditor';
+  export { LoadingErrorHandler } from './LoadingErrorHandler';
+  export { NoPostFound } from './NoPostFound';
 }
 
 // import React from 'react';

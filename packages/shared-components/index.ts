@@ -8,3 +8,5 @@ export { default as MainPostCard } from './MainPostCard';
 export { HeaderButton } from './HeaderButton';
 export { CommentSection } from './CommentSection';
 export { default as BlogPostEditor } from './BlogPostEditor';
+export { default as LoadingErrorHandler } from './LoadingErrorHandler';
+export { default as NoPostFound } from './NoPostFound';

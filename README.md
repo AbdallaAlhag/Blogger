@@ -50,8 +50,7 @@ First time using:
     ❌ Add publish button and try to combine it with unpublish
     ❌ Add animation to articles like slide in
     ❌ Add tags?
-    ❌ update loading and error states in article, blog, home pages
-
+    ✅ update loading, error, and no post found states in article, blog, home pages
 
 # Monorepo set up:
 
