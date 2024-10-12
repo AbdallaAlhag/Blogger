@@ -54,7 +54,7 @@ const PostCard: React.FC<PostCardProps> = ({
           onLoad={() => setLoading(false)} // Hide loader when image loads
         />
         <div className="px-6 py-0">
-          <h2 className="text-xl font-semibold mb-2 items-center flex justify-between">
+          {/* <h2 className="text-xl font-semibold mb-2 items-center flex justify-between line-clamp-1">
             {title}
             <div className="flex items-center">
               <MessageCircle size={20} className="text-gray-500 mr-2" />
@@ -62,18 +62,37 @@ const PostCard: React.FC<PostCardProps> = ({
                 <span className="text-gray-500 ml-2">{comments}</span>
               )}
             </div>
+          </h2> */}
+          <h2 className="text-xl font-semibold mb-2 flex justify-between items-center whitespace-nowrap overflow-hidden text-ellipsis">
+            <span className="overflow-hidden text-ellipsis">{title}</span>
+            <div className="flex items-center ml-4 whitespace-nowrap">
+              <MessageCircle size={20} className="text-gray-500 mr-2" />
+              {comments && (
+                <span className="text-gray-500 ml-2">{comments}</span>
+              )}
+            </div>
           </h2>
-          <p className="text-gray-600 mb-4">
+
+          {/* <div className="text-gray-600 mb-4 ">
             {content.split(' ').length > 15 ? (
               <>{parse(content.split(' ').slice(0, 15).join(' '))}...</>
             ) : (
               parse(content)
             )}
-          </p>
-          <div className="flex justify-between items-center text-sm text-gray-500 gap">
-            {/* <span>{author}</span>
-            <span>{createdAt}</span> */}
+          </div> */}
+          <div className="text-gray-600 mb-4">
+            {content.split(' ').length > 15 ? (
+              <>{parse(content.split(' ').slice(0, 15).join(' '))}...</>
+            ) : (
+              <div
+                className="line-clamp-2 overflow-hidden text-ellipsis"
+                style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }}
+              >
+                {parse(content)}
+              </div>
+            )}
           </div>
+          <div className="flex justify-between items-center text-sm text-gray-500 gap"></div>
         </div>
         <Link
           to={`/article/${id}`}

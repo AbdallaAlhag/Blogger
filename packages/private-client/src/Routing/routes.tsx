@@ -10,6 +10,7 @@ import {
   BlogPage,
 } from '../../../public-client/src/Pages';
 import CreateBlogPost from '../Pages/CreateBlogPage';
+import EditBlogPost from '../Pages/EditBlogPage';
 import ProtectedRoute from '../middleware/ProtectedRoute';
 
 // Private pages include create-blog and edit blog are not accessible from public client and while the rest redirect back to public client
@@ -30,8 +31,8 @@ const routes = [
   {
     path: '/article/:id',
     element: <ArticlePage />,
-    loader: () => {
-      goToPublic('/article/:id');
+    loader: ({ params }: { params: { id: string } }) => {
+      goToPublic(`/article/${params.id}`);
       return null;
     },
   },
@@ -71,6 +72,14 @@ const routes = [
       goToPublic('/blog');
       return null;
     },
+  },
+  {
+    path: '/edit-blog/:postId',
+    element: (
+      <ProtectedRoute>
+        <EditBlogPost />
+      </ProtectedRoute>
+    ),
   },
 ];
 

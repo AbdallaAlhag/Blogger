@@ -7,7 +7,7 @@ First time using:
 -Axios
 -Turborepo (monorepo)
 
-### Todo:
+### Progress:
 
     ✅❌
     ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
@@ -39,16 +39,21 @@ First time using:
     ✅ Add comments count to PostCard components
     ✅ Add TinyMCE editor to create blog
     ✅ slight problem directing to create blog page from public and also when publishing the articles
-      ✅ Added cookies instead of local storage to ease transfering of local storage between public and private client
+      ✅ Added cookies instead of local storage to ease transferring of local storage between public and private client
     ✅ Check out authorID in form for create blog post
     ✅ Fix post format html bug from TinyMCE editor
     ✅ Fix image upload bug, saved it from my server: http://localhost:3000/uploads/ Probably change that later
-    ❌ Allow users to edit their own posts
-    ❌ work on publishing features
-    ❌ Add animation to artciles like slide in
+    ✅ Create edit and unpublish button after authenticating user and user id = author id
+    ✅ Patch publish for a post
+    ✅ Allow users to edit their own posts
+    ❌ Create an all blogs page with user's own posts regardless of publish status
+    ❌ Add publish button and try to combine it with unpublish
+    ❌ Add animation to articles like slide in
     ❌ Add tags?
+    ❌ update loading and error states in article, blog, home pages
 
-# Monorepop set up:
+
+# Monorepo set up:
 
     -Installing dependencies (yarn install or npm install).
     -Running the development server (turbo run dev).

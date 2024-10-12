@@ -55,7 +55,7 @@ const ArticlePage: React.FC = () => {
 
   const unpublishPost = async (id: string) => {
     try {
-      await axios.patch(`${baseURL}/posts/${id}`);
+      await axios.patch(`${baseURL}/posts/${id}/update`);
       navigate('/', { replace: true });
     } catch (error) {
       console.error('Error publishing post:', error);
@@ -75,6 +75,11 @@ const ArticlePage: React.FC = () => {
     }
     return false;
   }
+
+  const handleEdit = (postId: string) => {
+    // navigate(`/edit-article/${postId}`); // Navigate to the edit article page
+    window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/edit-blog/${postId}`;
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -119,12 +124,12 @@ const ArticlePage: React.FC = () => {
         {/* <div className="text-lg">{post.content}</div> */}
         <div className="text-lg">
           {post.content.split('\n').map((paragraph, index) => (
-            <p
+            <div
               key={index}
               className="mb-4  max-w-screen-small sm:max-w-screen-2xl leading-relaxed text-justify"
             >
               {parse(paragraph)}
-            </p>
+            </div>
           ))}
         </div>
         <div className="mt-8">
@@ -143,7 +148,7 @@ const ArticlePage: React.FC = () => {
                 className="text-white bg-purple-700 hover:bg-purple-900 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-purple-500 font-medium rounded-lg text-sm px-5 py-2.5 ml-1 text-center inline-flex items-center"
                 onClick={() => {
                   if (id) {
-                    unpublishPost(id);
+                    unpublishPost(post.id);
                   }
                 }}
               >
@@ -152,6 +157,7 @@ const ArticlePage: React.FC = () => {
               <button
                 type="button"
                 className="text-white bg-green-700 hover:bg-green-900 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 ml-1 text-center inline-flex items-center"
+                onClick={() => handleEdit(post.id)}
               >
                 &#9998; Edit
               </button>

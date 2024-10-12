@@ -110,10 +110,11 @@ const BlogPage: React.FC = () => {
                   author={post.author.name}
                   createdAt={post.createdAt}
                   image={post.image}
+                  comments={post.comments.length}
                 />
-                <p className="mt-2 text-sm text-gray-600">
+                {/* <p className="mt-2 text-sm text-gray-600">
                   Comments: {post.comments.length}
-                </p>
+                </p> */}
               </div>
             ))
           ) : (

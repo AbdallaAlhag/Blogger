@@ -82,6 +82,33 @@ export async function createSinglePost(
   }
 }
 
+export async function updateSinglePost(
+  id: string,
+  title: string,
+  content: string,
+  image: string,
+  authorId: string
+) {
+  try {
+    const updatedPost = await prisma.post.update({
+      where: { id },
+      data: {
+        title,
+        content,
+        image,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
+      },
+    });
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getPostById(id: string) {
   try {
     const post = await prisma.post.findUnique({

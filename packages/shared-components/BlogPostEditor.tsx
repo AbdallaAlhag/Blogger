@@ -10,7 +10,6 @@ export default function BlogPostEditor({
   initialContent = '',
   onContentChange,
 }: BlogPostEditorProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [content, setContent] = useState(initialContent);
 
   useEffect(() => {
@@ -18,10 +17,13 @@ export default function BlogPostEditor({
       setContent(initialContent);
     }
   }, [initialContent]);
-  const handleEditorChange = (content: string) => {
-    setContent(content);
-    onContentChange(content);
+
+  const handleEditorChange = (newContent: string) => {
+    setContent(newContent);
+    onContentChange(newContent);
   };
+
+  console.log('BlogPostEditor rendering with content:', content);
 
   return (
     <div className="space-y-2">
@@ -34,7 +36,6 @@ export default function BlogPostEditor({
       <Editor
         id="content"
         apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
-        initialValue={''}
         value={content}
         init={{
           height: 500,

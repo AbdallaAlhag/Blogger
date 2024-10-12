@@ -13,7 +13,6 @@ export function Header() {
   useEffect(() => {
     setIsUserLoggedIn(isAuthenticated());
   }, []);
-
   return (
     <header className="bg-background shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -38,6 +37,7 @@ export function Header() {
           <HeaderButton
             onClick={() => {
               if (isUserLoggedIn) {
+                // window.location.href = 'http://localhost:5174/create-blog';
                 window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/create-blog`;
               } else {
                 navigate('/login', { replace: true });

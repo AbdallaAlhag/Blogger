@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   // const token = localStorage.getItem('token'); // Check JWT token
   const token = Cookies.get('token'); // Get the token from cookies
 
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     if (!token) {
       navigate('/login'); // Redirect to login if not authenticated
