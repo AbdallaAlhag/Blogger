@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "lint:turbo": "turbo run lint"
+    "lint:turbo": "turbo run lint",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "Abdalla Alhag",

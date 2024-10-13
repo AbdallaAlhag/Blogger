@@ -3,7 +3,7 @@
 
 First time using:
 -TypeScript
--TailwindCSS (disabled tailwind fold just so i can see the css for noob like me)
+-TailwindCSS (disabled tailwind fold just so i can see the css for beginners like me)
 -Axios
 -Turborepo (monorepo)
 

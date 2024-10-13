@@ -23,4 +23,5 @@ router.post('/posts/:id/comments', createComment);
 
 router.patch('/posts/:id/unpublish', unpublishPost);
 router.patch('/posts/:id/update', upload.single('image'), updatePost);
+
 export default router;
