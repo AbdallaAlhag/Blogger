@@ -8,11 +8,14 @@ import {
   getEveryPosts,
   unpublishPost,
   updatePost,
+  getAdmin,
 } from '../controllers/appController';
 import { upload } from '../middleware/fileUpload';
 
 router.get('/posts', getPosts);
 router.get('/posts-all', getEveryPosts);
+router.get('/posts/admin', getAdmin);
+// could easily combine these three ^
 router.get('/posts/:id', getSinglePost);
 
 router.post('/posts', upload.single('image'), createPost);

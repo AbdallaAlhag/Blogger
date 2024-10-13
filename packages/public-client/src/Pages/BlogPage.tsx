@@ -73,17 +73,17 @@ const BlogPage: React.FC = () => {
   // Change page
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       Loading...
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return <div className="text-red-500 text-center">{error}</div>;
-  }
+  // if (error) {
+  //   return <div className="text-red-500 text-center">{error}</div>;
+  // }
 
   return (
     <LoadingErrorHandler isLoading={isLoading} error={error}>

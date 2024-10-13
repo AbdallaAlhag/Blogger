@@ -7,6 +7,7 @@ import {
   createSingleComment,
   removePublishedPost,
   updateSinglePost,
+  getAdminPosts,
 } from '../db/queries';
 import jwt from 'jsonwebtoken';
 
@@ -133,6 +134,15 @@ export const getPosts = async (req: Request, res: Response) => {
 export const getEveryPosts = async (req: Request, res: Response) => {
   try {
     const post = await getAllPosts();
+    res.json(post);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAdmin = async (req: Request, res: Response) => {
+  try {
+    const post = await getAdminPosts();
     res.json(post);
   } catch (error) {
     console.error(error);

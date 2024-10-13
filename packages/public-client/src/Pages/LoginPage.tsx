@@ -182,6 +182,14 @@ export default function LoginPage() {
                 Sign up for an account
               </Link>
             </div>
+            <div className="mt-6 text-center">
+              <Link
+                to="/"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
+                Continue without an account
+              </Link>
+            </div>
           </div>
         </div>
       </div>

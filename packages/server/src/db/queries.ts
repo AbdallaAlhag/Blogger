@@ -57,6 +57,33 @@ export async function getAllPosts() {
     console.log(error);
   }
 }
+
+export async function getAdminPosts() {
+  try {
+    const allPosts = await prisma.post.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            comments: true,
+          },
+        },
+      },
+    });
+    return allPosts;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function createSinglePost(
   title: string,
   content: string,
@@ -169,14 +196,25 @@ export async function createSingleComment(
 
 export async function removePublishedPost(id: string) {
   try {
-    await prisma.post.update({
+    const post = await prisma.post.findUnique({
       where: {
         id,
       },
-      data: {
-        published: false,
+      select: {
+        published: true,
       },
     });
+
+    if (post) {
+      await prisma.post.update({
+        where: {
+          id,
+        },
+        data: {
+          published: !post.published, // Toggle published field
+        },
+      });
+    }
   } catch (error) {
     console.log(error);
   }

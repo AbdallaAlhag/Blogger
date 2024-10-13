@@ -11,6 +11,7 @@ import {
 } from '../../../public-client/src/Pages';
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import EditBlogPost from '../Pages/EditBlogPage';
+import AllBlogsPage from '../Pages/AllBlogsPage';
 import ProtectedRoute from '../middleware/ProtectedRoute';
 
 // Private pages include create-blog and edit blog are not accessible from public client and while the rest redirect back to public client
@@ -78,6 +79,14 @@ const routes = [
     element: (
       <ProtectedRoute>
         <EditBlogPost />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/all-blogs',
+    element: (
+      <ProtectedRoute>
+        <AllBlogsPage />
       </ProtectedRoute>
     ),
   },

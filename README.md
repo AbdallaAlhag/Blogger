@@ -46,8 +46,8 @@ First time using:
     ✅ Create edit and unpublish button after authenticating user and user id = author id
     ✅ Patch publish for a post
     ✅ Allow users to edit their own posts
-    ❌ Create an all blogs page with user's own posts regardless of publish status
-    ❌ Add publish button and try to combine it with unpublish
+    ✅ Create an all blogs page with user's own posts regardless of publish status
+    ✅ Add publish button and try to combine it with unpublish
     ❌ Add animation to articles like slide in
     ❌ Add tags?
     ✅ update loading, error, and no post found states in article, blog, home pages

@@ -27,6 +27,15 @@ export function Header() {
           </HeaderButton>
         </div>
         <div className="flex items-center space-x-4">
+          {isUserLoggedIn && (
+            <HeaderButton
+              onClick={() =>
+                (window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/all-blogs`)
+              }
+            >
+              Admin
+            </HeaderButton>
+          )}
           <HeaderButton
             onClick={() => {
               navigate('/blog');
