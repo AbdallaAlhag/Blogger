@@ -1,11 +1,9 @@
-![Turbo commands](image-1.png)
-![Eslint/Prettier commands](image-2.png)
 
-First time using:
--TypeScript
--TailwindCSS (disabled tailwind fold just so i can see the css for beginners like me)
--Axios
--Turborepo (monorepo)
+# First time using:
+  -TypeScript
+  -TailwindCSS (disabled tailwind fold just so i can see the css for beginners like me)
+  -Axios
+  -Turborepo (monorepo)
 
 ### Progress:
 
@@ -51,6 +49,7 @@ First time using:
     ❌ Add animation to articles like slide in
     ❌ Add tags?
     ✅ update loading, error, and no post found states in article, blog, home pages
+    ❌ deploy this bad boy to railway
 
 # Monorepo set up:
 

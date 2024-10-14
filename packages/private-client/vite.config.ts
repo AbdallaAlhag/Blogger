@@ -6,6 +6,10 @@ console.log(__dirname);
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  preview: {
+    host: '0.0.0.0',
+    port: 4173, // Use any port that is open
+  },
   build: {
     outDir: 'dist', // Ensure the build goes to dist folder
     sourcemap: true, // Optional: Generate source maps for debugging
