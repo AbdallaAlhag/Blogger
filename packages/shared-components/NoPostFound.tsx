@@ -5,7 +5,7 @@ import { FileX } from 'lucide-react';
 
 const NoPostFound: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 w-full">
       <FileX className="w-24 h-24 text-gray-400 mb-4" />
       <h1 className="text-3xl font-bold text-gray-800 mb-2">No Post Found</h1>
       <p className="text-xl text-gray-600 mb-6">

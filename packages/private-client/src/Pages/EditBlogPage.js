@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import  useDropzone  from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 import { Header, Footer, BlogPostEditor } from '@shared';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
