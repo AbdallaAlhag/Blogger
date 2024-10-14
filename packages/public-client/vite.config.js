@@ -10,6 +10,7 @@ export default defineConfig({
     },
     build: {
         outDir: 'dist', // Ensure the build goes to dist folder
+        emptyOutDir: true,
         sourcemap: true, // Optional: Generate source maps for debugging
         rollupOptions: {
             input: path.resolve(__dirname, 'src/main.tsx'), // Your entry file
