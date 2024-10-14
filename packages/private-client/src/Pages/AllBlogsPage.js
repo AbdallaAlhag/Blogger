@@ -15,7 +15,6 @@ const AllBlogsPage = () => {
     const baseURL = import.meta.env.VITE_API_BASE_URL;
     useEffect(() => {
         fetchPosts();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const fetchPosts = async () => {
         try {
