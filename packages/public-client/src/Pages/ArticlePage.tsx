@@ -1,6 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Header, Footer, CommentSection, LoadingErrorHandler, NoPostFound } from '@shared';
+import {
+  Header,
+  Footer,
+  CommentSection,
+  LoadingErrorHandler,
+  NoPostFound,
+} from '@shared';
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -91,7 +97,6 @@ const ArticlePage: React.FC = () => {
 
   if (!post) {
     return <NoPostFound />;
-
   }
 
   const imagePath = post.image.slice(8);

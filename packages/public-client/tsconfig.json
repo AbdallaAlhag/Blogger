@@ -13,9 +13,11 @@
     "strict": true,
     "target": "esnext",
     "module": "esnext",
-    "baseUrl": "./",
+    "types": ["node"],
+    "baseUrl": ".",
     "paths": {
-      "@shared/*": ["../shared-components/*"]
+      "@shared/*": ["../shared-components/*"],
+      "@/*": ["src/*"]
     }
   },
   "files": [],

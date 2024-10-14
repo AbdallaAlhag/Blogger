@@ -11,7 +11,12 @@ import {
 } from '../db/queries';
 import jwt from 'jsonwebtoken';
 
-export const createPost = async (req: Request, res: Response) => {
+interface CustomRequest extends Request {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  file?: any; // Adjust the type as needed, e.g., `Multer.File`
+}
+
+export const createPost = async (req: CustomRequest, res: Response) => {
   const { title, content } = req.body;
   const image = req.file;
   const token = req.headers.authorization?.split(' ')?.[1];

@@ -1,55 +1,51 @@
 {
-    "$schema": "https://turbo.build/schema.json",
-    "globalDependencies": [
-      "package.json",
-      "tsconfig.json",
-      ".env"
-    ],
-    "globalEnv": [
-      "NODE_ENV",
-      "DATABASE_URL",
-      "VITE_API_BASE_URL",
-      "VITE_PRIVATE_CLIENT_URL",
-      "VITE_TINYMCE_API_KEY",
-      "VITE_DOMAIN",
-      "VITE_PUBLIC_CLIENT_URL",
-      "JWT_SECRET"
-    ],
-    "tasks": {
-      "build": {
-        "dependsOn": ["^build"],
-        "outputs": ["dist/**", "build/**"]
-      },
-      "dev": {
-        "persistent": true,
-        "cache": false
-      },
-      "clean": {
-        "cache": false
-      },
-      "lint": {
-        "outputs": []
-      },
-      "lint:fix": {
-        "outputs": []
-      },
-      "format": {
-        "outputs": []
-      },
-      "preview": {
-        "dependsOn": ["build"],
-        "cache": false
-      },
-      "serve": {
-        "dependsOn": ["build"],
-        "cache": false
-      },
-      "start": {
-        "dependsOn": ["build"],
-        "cache": false
-      },
-      "seed": {
-        "cache": false
-      }
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["package.json", "tsconfig.json", ".env"],
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_URL",
+    "VITE_API_BASE_URL",
+    "VITE_PRIVATE_CLIENT_URL",
+    "VITE_TINYMCE_API_KEY",
+    "VITE_DOMAIN",
+    "VITE_PUBLIC_CLIENT_URL",
+    "JWT_SECRET"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "lint": {
+      "outputs": []
+    },
+    "lint:fix": {
+      "outputs": []
+    },
+    "format": {
+      "outputs": []
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "serve": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "seed": {
+      "cache": false
     }
   }
+}

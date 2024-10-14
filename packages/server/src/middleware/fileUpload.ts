@@ -1,11 +1,20 @@
 import path from 'path';
 import multer from 'multer';
+import { Request } from 'express';
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, destination: string) => void
+  ) => {
     cb(null, './uploads/');
   },
-  filename: (req, file, cb) => {
+  filename: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, filename: string) => void
+  ) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     cb(
       null,
@@ -13,7 +22,6 @@ const storage = multer.diskStorage({
     );
   },
 });
-
 const upload = multer({ storage: storage });
 
 export { upload };
