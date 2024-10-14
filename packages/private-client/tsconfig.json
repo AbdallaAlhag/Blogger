@@ -27,11 +27,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "include": [
-    "src",
-    "src/**/*",
+    // "src",
     "../shared-components",
     "declaration.d.ts",
     "shared.d.ts", // Include the declaration file
-    "../public-client/src"
   ]
 }
