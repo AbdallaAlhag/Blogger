@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  // "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist", // Move output files (including .d.ts) to ./dist
     "declaration": false, // Generate .d.ts files
