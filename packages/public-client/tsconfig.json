@@ -33,13 +33,13 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["../shared-components/*"],
+      "@shared/*": ["shared-components/*"],
       "@/*": ["src/*"]
     }
   },
   "include": [
     "src", // Ensures all files in src are included
-    "../shared-components/**/*",
+    "shared-components/**/*",
     "declaration.d.ts",
     "shared.d.ts" 
   ],
