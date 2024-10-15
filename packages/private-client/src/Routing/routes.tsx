@@ -100,7 +100,9 @@ import {
   LoginPage,
   SignUpPage,
   BlogPage,
-} from '../../../public-client/src/Pages';
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+} from '@public-client';
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import EditBlogPost from '../Pages/EditBlogPage';
 import AllBlogsPage from '../Pages/AllBlogsPage';
