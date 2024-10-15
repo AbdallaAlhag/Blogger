@@ -15,7 +15,21 @@ export default defineConfig({
     sourcemap: true, // Optional: Generate source maps for debugging
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.tsx'), // Your entry file
-      external: ['lucide-react', '@tinymce/tinymce-react', 'react-content-loader', 'html-react-parser'], // Add all external modules here
+      external: ['lucide-react',
+        '@tinymce/tinymce-react',
+        'react-content-loader',
+        'html-react-parser',
+        'axios',
+        'date-fns',
+        'js-cookie',
+        'json',
+        'jwt-decode',
+        'prop-types',
+        'react',
+        'react-dom',
+        'react-dropzone',
+        'react-router',
+        'react-router-dom'], // Add all external modules here
     },
   },
   css: {
