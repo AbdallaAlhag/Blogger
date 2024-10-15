@@ -91,7 +91,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 //   },
 // ];
 // export default routes;
-import { HomePage, ErrorPage, ArticlePage, LoginPage, SignUpPage, BlogPage, } from '../../../public-client/src/Pages';
+import { HomePage, ErrorPage, ArticlePage, LoginPage, SignUpPage, BlogPage, } from '@public-client/Pages';
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import EditBlogPost from '../Pages/EditBlogPage';
 import AllBlogsPage from '../Pages/AllBlogsPage';
