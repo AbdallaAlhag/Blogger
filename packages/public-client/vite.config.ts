@@ -15,6 +15,7 @@ export default defineConfig({
     sourcemap: true, // Optional: Generate source maps for debugging
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.tsx'), // Your entry file
+      external: ['lucide-react'],
     },
   },
   css: {
@@ -26,4 +27,5 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, 'shared-components'), // Adjust this path
     },
   },
+  
 });
