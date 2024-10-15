@@ -16,8 +16,8 @@
     "baseUrl": ".", // This points to the root of your public-client folder
     "types": ["node"],
     "paths": {
-      "@shared/*": ["../shared-components/*"],
-      "@public-client/*": ["../public-client/src/*"],
+      "@shared/*": ["shared-components/*"],
+      "@public-client/*": ["public-client/src/*"],
       "@/*": ["src/*"]
     }
   },
@@ -28,7 +28,8 @@
   ],
   "include": [
     // "src",
-    "../shared-components",
+    "shared-components",
+    "public-client",
     "declaration.d.ts",
     "shared.d.ts", // Include the declaration file
   ]

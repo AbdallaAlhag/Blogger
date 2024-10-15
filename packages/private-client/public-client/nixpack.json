@@ -1,0 +1,6 @@
+{
+  "phases": {
+    "install": "npm install --omit=dev",
+    "build": "npm run build"
+  }
+}
