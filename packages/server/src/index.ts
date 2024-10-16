@@ -7,8 +7,8 @@ import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
 import path from 'path';
 
-const publicAddress = process.env.VITE_PUBLIC_CLIENT_URL; 
-const privateAddress = process.env.VITE_PRIVATE_CLIENT_URL;
+const publicAddress: string = process.env.VITE_PUBLIC_CLIENT_URL || ''; 
+const privateAddress: string = process.env.VITE_PRIVATE_CLIENT_URL || '';
 const corsOptions = {
   origin: [publicAddress, privateAddress], // allow to server to accept request from our react clients
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
