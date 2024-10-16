@@ -67,9 +67,9 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello from the server!');
 });
 
-const PORT: number | string = process.env.PORT ?? 3000;
+const port: number | string = process.env.PORT ?? 3000;
 // const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(Number(port), "0.0.0.0",  () => {
+  console.log(`Server is running on port ${port}`);
 });
