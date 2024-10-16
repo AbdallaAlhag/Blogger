@@ -36,12 +36,14 @@ const PostCard: React.FC<PostCardProps> = ({
 }) => {
   const [loading, setLoading] = useState(true); // Local loading state
   const imagePath = image.slice(8);
+  const PORT: number | string = process.env.PORT ?? 3000;
+const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
   // console.log(imagePath);
   const imageUrl =
     image === 'default-image.png'
       ? `https://picsum.photos/seed/${id}/500/300`
       : // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
-        `http://localhost:3000/uploads/${imagePath}`;
+        `${API_URL}${PORT}/uploads/${imagePath}`;
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden  hover:transition hover:duration-100 hover:ease-in-out hover:translate-y-[-5px] hover:opacity-90">

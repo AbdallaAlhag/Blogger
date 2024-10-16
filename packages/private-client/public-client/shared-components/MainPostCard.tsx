@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ContentLoader from 'react-content-loader';
 import parse from 'html-react-parser';
 
-// eslint-disable-next-line react/prop-types
 const PostCardLoader: React.FC<{ isLarge: boolean }> = ({ isLarge }) => {
   const width = isLarge ? 1000 : 500; // Dynamic width based on isLarge
   const height = isLarge ? 600 : 300; // Dynamic height based on isLarge
@@ -40,14 +39,17 @@ const PostCard: React.FC<PostCardProps> = ({
   const [loading, setLoading] = useState(true);
   const imagePath = image.slice(8);
   // console.log(imagePath);
+  const PORT: number | string = process.env.PORT ?? 3000;
+  const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
+
   const imageUrl =
     image === 'default-image.png'
       ? isLarge
         ? `https://picsum.photos/seed/${id}/1000/610`
         : `https://picsum.photos/seed/${id}/500/300`
       : isLarge
-        ? `http://localhost:3000/uploads/${imagePath}?w=1000&h=610`
-        : `http://localhost:3000/uploads/${imagePath}?w=500&h=300`;
+        ? `${API_URL}${PORT}/uploads/${imagePath}?w=1000&h=610`
+        : `${API_URL}${PORT}/uploads/${imagePath}?w=500&h=300`;
   // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
 
   return (

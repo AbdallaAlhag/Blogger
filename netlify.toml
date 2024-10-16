@@ -1,0 +1,13 @@
+# netlify.toml
+
+# Public client configuration
+[build]
+  base = "packages/public-client"
+  publish = "packages/public-client/dist"
+  command = "npm run build"
+
+# Private client configuration
+[[context.production.environment]]
+  base = "packages/private-client"
+  publish = "packages/private-client/dist"
+  command = "npm run build"

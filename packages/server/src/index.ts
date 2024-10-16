@@ -7,8 +7,10 @@ import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
 import path from 'path';
 
+const publicAddress = process.env.VITE_PUBLIC_CLIENT_URL; 
+const privateAddress = process.env.VITE_PRIVATE_CLIENT_URL;
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:5174'], // allow to server to accept request from our react clients
+  origin: [publicAddress, privateAddress], // allow to server to accept request from our react clients
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
@@ -66,7 +68,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 const PORT: number | string = process.env.PORT ?? 3000;
+const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on ${API_URL}${PORT}`);
 });

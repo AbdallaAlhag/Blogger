@@ -100,12 +100,14 @@ const ArticlePage: React.FC = () => {
   }
 
   const imagePath = post.image.slice(8);
+  const PORT: number | string = process.env.PORT ?? 3000;
+  const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
   // console.log(imagePath);
   const imageUrl =
     post.image === 'default-image.png'
       ? `https://picsum.photos/seed/${id}/1200/675`
       : // `${import.meta.env.VITE_DOMAIN}/uploads/${imagePath}`;
-        `http://localhost:3000/uploads/${imagePath}`;
+        `${API_URL}${PORT}/uploads/${imagePath}`;
 
   return (
     <LoadingErrorHandler isLoading={isLoading} error={error}>
