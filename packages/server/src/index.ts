@@ -68,8 +68,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 const PORT: number | string = process.env.PORT ?? 3000;
-const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
+// const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
 
 app.listen(PORT, () => {
-  console.log(`Server is running on ${API_URL}${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
