@@ -41,7 +41,8 @@
     "src", // Ensures all files in src are included
     "shared-components/**/*",
     "declaration.d.ts",
-    "shared.d.ts" 
+    "shared.d.ts",
+    "vite.config.ts",
   ],
   "references": [
     { "path": "./tsconfig.app.json" },
