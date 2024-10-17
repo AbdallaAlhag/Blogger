@@ -6,39 +6,17 @@ console.log(__dirname);
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: { 
-    host: '0.0.0.0',
-    port: Number(process.env.PORT) || 5173 
-  },
-  preview: {
-    host: '0.0.0.0',
-    port: Number(process.env.PORT) || 5173,
-    strictPort: false, // Changed to false for Railway
-  },
   build: {
-    outDir: 'dist', // Ensure the build goes to dist folder
-    sourcemap: true, // Optional: Generate source maps for debugging
+    outDir: 'dist',
     emptyOutDir: true,
-    assetsDir: 'assets',
-    // rollupOptions: {
-    //   input: path.resolve(__dirname, 'src/main.tsx'), // Your entry file
-    //   external: ['lucide-react',
-    //     '@tinymce/tinymce-react',
-    //     'react-content-loader',
-    //     'html-react-parser',
-    //     'axios',
-    //     'date-fns',
-    //     'js-cookie',
-    //     'json',
-    //     'jwt-decode',
-    //     'prop-types',
-    //     'react',
-    //     'react-dom',
-    //     'react-dropzone',
-    //     'react-router',
-    //     'react-router-dom'], // Add all external modules here
-    // },
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      }
+    },
+    copyPublicDir: true,
   },
+  publicDir: 'public',  // Make sure this is set
   css: {
     postcss: path.resolve(__dirname, './postcss.config.js'), // Ensure PostCSS config is referenced
   },
