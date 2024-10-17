@@ -11,8 +11,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "preview": "vite preview",
-    "serve": "vite preview --host",
-    "start": "npm run build && vite --host"
+    "serve": "vite preview --host"
   },
   "dependencies": {
     "@tinymce/tinymce-react": "^5.1.1",
