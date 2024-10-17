@@ -14,5 +14,5 @@
 # Dev settings (for local Netlify dev server)
 [dev]
   command = "npm run dev"
-  port = 5173
+  port = 5174
   publish = "packages/private-client/dist"  # Change this to the correct path
