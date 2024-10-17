@@ -1,13 +1,23 @@
-# netlify.toml
-
-# Public client configuration
+# Common build settings for both public and private clients
 [build]
-  base = "packages/public-client"
-  publish = "packages/public-client/dist"
-  command = "npm run build"
+  command = "npm install && npm run build"  # Ensure you build the public-client by default
+  publish = "packages/public-client/dist"  # Set the publish directory for the public-client
 
-# Private client configuration
-[[context.production.environment]]
-  base = "packages/private-client"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables for the build process
+[build.environment]
+  NODE_VERSION = "20"
+
+# Context for production deployment of public client
+[context.production]
+  command = "npm run build"  # Removed the prefix here
+  publish = "packages/public-client/dist"
+
+# Context for production deployment of private client
+[context.production.private]
+  command = "npm run build"  # Remove prefix here as well
   publish = "packages/private-client/dist"
-  command = "npm run build"

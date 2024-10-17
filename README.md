@@ -49,7 +49,8 @@
     ❌ Add animation to articles like slide in
     ❌ Add tags?
     ✅ update loading, error, and no post found states in article, blog, home pages
-    ❌ deploy this bad boy to railway
+    ❌ deploy this bad boy to railway -server
+    ❌ deploy front end to netlify
 
 # Monorepo set up:
 
