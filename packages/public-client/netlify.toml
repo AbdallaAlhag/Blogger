@@ -1,7 +1,7 @@
 # Public client deployment for Netlify
 [build]
-  BASE = "packages/private-client"
-  PUBLISH = "packages/private-client/dist"
+  BASE = "packages/public-client"
+  PUBLISH = "packages/public-client/dist"
   COMMAND = "npm run build"
 
 
