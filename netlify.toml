@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build --prefix packages/private-client"
-  publish = "packages/private-client/dist"  # Ensure this matches your build output directory
+  command = "npm run build --prefix packages/public-client"
+  publish = "packages/public-client/dist"  # Ensure this matches your build output directory
 
 [[redirects]]
   from = "/*"
@@ -13,4 +13,4 @@
 [dev]
   command = "npm run dev"
   port = 5174
-  publish = "packages/private-client/dist"
+  publish = "packages/public-client/dist"
