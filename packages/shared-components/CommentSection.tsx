@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
-import axios from 'axios';
 
 interface Comment {
   username: string;
@@ -26,20 +25,38 @@ export function CommentSection({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newComment.trim() && username.trim()) {
-      const { data: newCommentData } = await axios.post(
-        `${baseURL}/posts/${blogId}/comments`,
-        {
-          username,
-          content: newComment,
+      try {
+        const response = await fetch(`${baseURL}/posts/${blogId}/comments`, {
+          method: 'POST',
+          credentials: 'include', // Include cookies for authentication if needed
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            content: newComment,
+          }),
+          mode: 'cors', // Specify CORS mode
+        });
+
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      );
 
-      // Update the comments list dynamically
-      setComments([newCommentData, ...comments]);
+        const newCommentData = await response.json();
+        console.log('New comment data received:', newCommentData);
 
-      // Clear the input fields after submitting the comment
-      setNewComment('');
-      setUsername('');
+        // Update the comments list dynamically
+        setComments([newCommentData, ...comments]);
+
+        // Clear the input fields after submitting the comment
+        setNewComment('');
+        setUsername('');
+      } catch (error) {
+        console.error('Error posting comment:', error);
+      }
     }
   };
 

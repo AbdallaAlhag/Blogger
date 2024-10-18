@@ -6,6 +6,7 @@ import * as path from 'path';
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 5173,
     proxy: {
       '/api': {
         target: 'https://server-production-d6c6.up.railway.app',

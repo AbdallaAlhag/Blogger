@@ -20,33 +20,10 @@ const productionPublicAddress: string =
   process.env.VITE_PUBLIC_CLIENT_URL || '';
 const productionPrivateAddress: string =
   process.env.VITE_PRIVATE_CLIENT_URL || '';
-const corsOptions = {
-  origin: [
-    publicAddress,
-    privateAddress,
-    productionPublicAddress,
-    productionPrivateAddress,
-  ], // allow to server to accept request from our react clients
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['set-cookie'],
-};
 
+console.log(`VITE_PUBLIC_CLIENT_URL: ${publicAddress}`);
+console.log(`VITE_PRIVATE_CLIENT_URL: ${privateAddress}`);
 // const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
-
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//       // If origin is in the list of allowed origins or if it's undefined (for same-origin requests)
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   optionsSuccessStatus: 200,
-// };
 
 // The following code is for handling graceful shutdowns of the server
 // We use these events to disconnect from the database before the process exits
@@ -69,8 +46,31 @@ process.on('SIGTERM', async () => {
 
 const app = express();
 app.use(express.json());
-app.use(cors(corsOptions));
-// Middleware to initialize Passport
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        publicAddress,
+        privateAddress,
+        productionPublicAddress,
+        productionPrivateAddress,
+      ];
+      console.log('Request origin:', origin);
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        console.log('Origin not allowed:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    optionsSuccessStatus: 200,
+  })
+);
+
 app.use(passport.initialize());
 // Middleware to handle errors
 app.use(errorHandler);

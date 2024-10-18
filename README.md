@@ -52,6 +52,7 @@
     ✅ deploy this bad boy to railway -server
     ✅ deploy front end to netlify
     ❌ Connect deployed front end to deployed server
+    ❌ Work on fixing reload glitch issue 
 # Monorepo set up:
 
     -Installing dependencies (yarn install or npm install).

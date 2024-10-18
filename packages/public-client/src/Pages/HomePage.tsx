@@ -29,7 +29,13 @@ const HomePage: React.FC = () => {
   }
   useEffect(() => {
     axios
-      .get(`${baseURL}/posts`)
+      .get(`${baseURL}/posts`, {
+        withCredentials: true, // equivalent to credentials: 'include'
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
       .then(({ data }) => {
         // Ensure 'author' is always an object with a 'name'
         const updatedPosts = data.map((post: BlogPost) => ({

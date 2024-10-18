@@ -1,5 +1,4 @@
 import { HeaderButton } from '@shared';
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -29,49 +28,52 @@ export default function SignUpPage() {
     }
 
     try {
-      const res = await axios.post(`${baseURL}/auth/signup`, {
-        username,
-        name,
-        email,
-        password,
-        confirmPassword,
+      const response = await fetch(`${baseURL}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          name,
+          email,
+          password,
+          confirmPassword,
+        }),
+        credentials: 'include', // Include cookies for authentication if needed
+        mode: 'cors', // Specify CORS mode
       });
-      console.log('Full response:', res); // Add this line
 
-      // if (res.status === 200) {
-      if (res.data && res.data.success) {
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        // Handle specific errors based on response status
+        if (response.status === 400 && errorData.errors) {
+          const errorObject = errorData.errors;
+          setError(Object.values(errorObject).join(', ').replace(/,/g, ', '));
+        } else {
+          setError(
+            'Sign-up failed. Please try again. some type of bad request'
+          );
+        }
+        return;
+      }
+
+      const resData = await response.json();
+      console.log('Full response:', resData); // Log the full response data
+
+      if (resData && resData.success) {
         console.log('Signed up successfully');
         navigate('/login', { replace: true });
-      } else if (res.status === 400 && res.data.errors) {
-        const errorObject = res.data.errors;
-        setError(Object.values(errorObject).join(', ').replace(/,/g, ', '));
       } else {
-        setError('Sign-up failed. Please try again. some type of bad request');
+        setError('Sign-up failed. Please try again.');
       }
     } catch (err) {
-      if (axios.isAxiosError(err) && err.response) {
-        console.log('Error response data:', err.response.data);
-
-        const validationErrors = err.response.data;
-        console.log(validationErrors);
-        if (
-          validationErrors &&
-          typeof validationErrors === 'object' &&
-          validationErrors.errors
-        ) {
-          const errorMessages = Object.values(validationErrors.errors)
-            .map((msg) => String(msg)) // Convert `msg` to a string explicitly
-            .join('<br />'); // Join messages with a newline
-
-          setError(errorMessages); // Display the combined error messages
-        }
-        // If no specific error information is available
-        else {
-          setError('Sign-up failed. Please try again. catch caught error');
-        }
-      } else {
-        setError('An unexpected error occurred. Please try again.');
-      }
+      // Handle network or other unexpected errors
+      console.error('Error during sign-up:', err);
+      setError('An unexpected error occurred. Please try again.');
     }
   };
 
