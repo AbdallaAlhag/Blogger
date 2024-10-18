@@ -1,23 +1,16 @@
-# Common build settings for both public and private clients
 [build]
-  command = "npm install && npm run build"  # Ensure you build the public-client by default
-  publish = "packages/public-client/dist"  # Set the publish directory for the public-client
+  command = "npm run build --prefix packages/private-client"
+  publish = "packages/private-client/dist"  # Ensure this matches your build output directory
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Environment variables for the build process
 [build.environment]
   NODE_VERSION = "20"
 
-# Context for production deployment of public client
-[context.production]
-  command = "npm run build"  # Removed the prefix here
-  publish = "packages/public-client/dist"
-
-# Context for production deployment of private client
-[context.production.private]
-  command = "npm run build"  # Remove prefix here as well
+[dev]
+  command = "npm run dev"
+  port = 5173
   publish = "packages/private-client/dist"
