@@ -54,6 +54,8 @@ app.use(
         privateAddress,
         productionPublicAddress,
         productionPrivateAddress,
+        'http://localhost:4173',
+        'http://localhost:4174',
       ];
       console.log('Request origin:', origin);
       // Allow requests with no origin (like mobile apps or curl requests)
@@ -70,6 +72,7 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+app.options('*', cors()); // Allow preflight requests for all routes
 
 app.use(passport.initialize());
 // Middleware to handle errors
