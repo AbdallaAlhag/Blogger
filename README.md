@@ -51,8 +51,10 @@
     ✅ update loading, error, and no post found states in article, blog, home pages
     ✅ deploy this bad boy to railway -server
     ✅ deploy front end to netlify
-    ❌ Connect deployed front end to deployed server
-    ❌ Work on fixing reload glitch issue 
+    ✅ Connect deployed front end to deployed server
+    ✅ Work on fixing reload glitch issue 
+    ❌ Work on slight loading page 
+
 # Monorepo set up:
 
     -Installing dependencies (yarn install or npm install).
