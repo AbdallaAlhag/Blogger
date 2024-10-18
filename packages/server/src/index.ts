@@ -16,10 +16,10 @@ dotenv.config({ path: envFile });
 
 const publicAddress: string = process.env.VITE_PUBLIC_CLIENT_URL || '';
 const privateAddress: string = process.env.VITE_PRIVATE_CLIENT_URL || '';
-const productionPublicAddress: string =
-  process.env.VITE_PUBLIC_CLIENT_URL || '';
-const productionPrivateAddress: string =
-  process.env.VITE_PRIVATE_CLIENT_URL || '';
+// const productionPublicAddress: string =
+//   process.env.VITE_PUBLIC_CLIENT_URL || '';
+// const productionPrivateAddress: string =
+//   process.env.VITE_PRIVATE_CLIENT_URL || '';
 
 console.log(`VITE_PUBLIC_CLIENT_URL: ${publicAddress}`);
 console.log(`VITE_PRIVATE_CLIENT_URL: ${privateAddress}`);
@@ -52,10 +52,10 @@ app.use(
       const allowedOrigins = [
         publicAddress,
         privateAddress,
-        productionPublicAddress,
-        productionPrivateAddress,
-        'https://blogger-public.netlify.app/',
-        'https://blogger-public.netlify.app/',
+        // productionPublicAddress,
+        // productionPrivateAddress,
+        'https://blogger-public.netlify.app',
+        'https://blogger-private.netlify.app',
         'http://localhost:4173',
         'http://localhost:4174',
       ];
