@@ -13,6 +13,8 @@ export default function LoginPage() {
   const navigate = useNavigate(); // Hook to programmatically navigate
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
+  const publicURL = import.meta.env.VITE_PUBLIC_URL;
+  const privateURL = import.meta.env.VITE_PRIVATE_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,9 +34,14 @@ export default function LoginPage() {
         const token = res.data.token;
         // localStorage.setItem('token', token);
         Cookies.set('token', token, {
-          expires: 1,
-          sameSite: 'lax',
           secure: true,
+          sameSite: 'Lax',
+          domain: publicURL,
+        });
+        Cookies.set('token', token, {
+          secure: true,
+          sameSite: 'Lax',
+          domain: privateURL,
         });
         navigate('/', { replace: true });
       } else {
@@ -64,7 +71,11 @@ export default function LoginPage() {
 
           // Save token to localStorage
           // localStorage.setItem('token', token); // Or use sessionStorage or cookies
-          Cookies.set('token', token, { expires: 1, sameSite: 'lax', secure: true });
+          Cookies.set('token', token, {
+            expires: 1,
+            sameSite: 'lax',
+            secure: true,
+          });
           console.log('Successfully logged in');
           navigate('/', { replace: true });
         } else {
