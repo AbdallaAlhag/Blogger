@@ -9,7 +9,7 @@ import {
   BlogPage,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-} from '@public-client';
+} from '@public-client/Pages';
 import CreateBlogPost from '../Pages/CreateBlogPage';
 import EditBlogPost from '../Pages/EditBlogPage';
 import AllBlogsPage from '../Pages/AllBlogsPage';

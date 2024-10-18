@@ -2,7 +2,7 @@
   // "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist", // Move output files (including .d.ts) to ./dist
-    "declaration": false, // Generate .d.ts files
+    // "declaration": false, // Generate .d.ts files
     // "declarationDir": "./dist",   // Move .d.ts files to the dist directory
     "emitDeclarationOnly": false, // Emit both .js and .d.ts files
     "sourceMap": true, // Enable sourcemaps (optional)
@@ -13,11 +13,12 @@
     "strict": true,
     "target": "esnext",
     "module": "esnext",
+    "noEmit": true,
     "baseUrl": ".", // This points to the root of your public-client folder
     "types": ["node"],
     "paths": {
-      "@shared/*": ["shared-components/*"],
-      "@public-client/*": ["public-client/src/*"],
+      "@shared/*": ["../shared-components/*"],
+      "@public-client/*": ["../public-client/src/*"],
       "@/*": ["src/*"]
     }
   },
@@ -28,8 +29,8 @@
   ],
   "include": [
     // "src",
-    "shared-components",
-    "public-client",
+    "../shared-components",
+    "../private-client",
     "declaration.d.ts",
     "shared.d.ts", // Include the declaration file
   ]

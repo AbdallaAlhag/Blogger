@@ -6,13 +6,20 @@ import passport from './Auth/passport'; // The passport configuration file
 import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
 import path from 'path';
+import dotenv from 'dotenv';
+const envFile =
+  process.env.NODE_ENV === 'production'
+    ? '.env.production'
+    : '.env.development';
+
+dotenv.config({ path: envFile });
 
 const publicAddress: string = process.env.VITE_PUBLIC_CLIENT_URL || '';
 const privateAddress: string = process.env.VITE_PRIVATE_CLIENT_URL || '';
 const productionPublicAddress: string =
-  process.env.VITE_PRODUCTION_CLIENT_URL || '';
+  process.env.VITE_PUBLIC_CLIENT_URL || '';
 const productionPrivateAddress: string =
-  process.env.VITE_PRODUCTION_PRIVATE_CLIENT_URL || '';
+  process.env.VITE_PRIVATE_CLIENT_URL || '';
 const corsOptions = {
   origin: [
     publicAddress,

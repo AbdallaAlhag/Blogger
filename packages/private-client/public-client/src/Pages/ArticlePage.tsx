@@ -100,8 +100,8 @@ const ArticlePage: React.FC = () => {
   }
 
   const imagePath = post.image.slice(8);
-  const PORT: number | string = process.env.PORT ?? 3000;
-  const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
+  const PORT: number | string = import.meta.env.VITE_PORT ?? 3000;
+  const API_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:";
   // console.log(imagePath);
   const imageUrl =
     post.image === 'default-image.png'

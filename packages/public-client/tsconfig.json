@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist", // Move output files (including .d.ts) to ./dist
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
