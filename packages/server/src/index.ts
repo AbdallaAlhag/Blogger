@@ -7,11 +7,21 @@ import appRouter from './routes/appRouter';
 import authRouter from './routes/authRouter';
 import path from 'path';
 
-const publicAddress: string = process.env.VITE_PUBLIC_CLIENT_URL || ''; 
+const publicAddress: string = process.env.VITE_PUBLIC_CLIENT_URL || '';
 const privateAddress: string = process.env.VITE_PRIVATE_CLIENT_URL || '';
+const productionPublicAddress: string =
+  process.env.VITE_PRODUCTION_CLIENT_URL || '';
+const productionPrivateAddress: string =
+  process.env.VITE_PRODUCTION_PRIVATE_CLIENT_URL || '';
 const corsOptions = {
-  origin: [publicAddress, privateAddress], // allow to server to accept request from our react clients
+  origin: [
+    publicAddress,
+    privateAddress,
+    productionPublicAddress,
+    productionPrivateAddress,
+  ], // allow to server to accept request from our react clients
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true,
 };
 
 // const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
@@ -70,6 +80,6 @@ app.get('/', (req: Request, res: Response) => {
 const port: number | string = process.env.PORT ?? 3000;
 // const API_URL = process.env.VITE_API_BASE_URL || "http://localhost:";
 
-app.listen(Number(port), "0.0.0.0",  () => {
+app.listen(Number(port), '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
