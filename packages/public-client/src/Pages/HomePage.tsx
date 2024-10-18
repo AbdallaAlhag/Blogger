@@ -16,6 +16,7 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
+  console.log(baseURL);
   interface BlogPost {
     id: string;
     title: string;
@@ -27,43 +28,52 @@ const HomePage: React.FC = () => {
       comments: number;
     };
   }
+
   useEffect(() => {
-    axios
-      .get(`${baseURL}/posts`, {
-        withCredentials: true, // equivalent to credentials: 'include'
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(({ data }) => {
-        // Ensure 'author' is always an object with a 'name'
-        const updatedPosts = data.map((post: BlogPost) => ({
-          ...post,
-        }));
-        // console.log(data);
-        setPosts(updatedPosts);
-        // console.log(updatedPosts);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setIsLoading(false);
-      });
+    // if (!baseURL || isLoading) {  // Don't fetch if already loading
+    //   return;
+    // }
+    if (!baseURL) {
+      setError('Base URL is not defined');
+      return;
+    }
+
+    let isMounted = true; // Add this flag
+    const controller = new AbortController();
+
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(`${baseURL}/posts`, {
+          signal: controller.signal,
+        });
+        // Only update state if component is still mounted
+        if (isMounted) {
+          setPosts(response.data);
+          setIsLoading(false);
+        }
+      } catch (error: unknown) {
+        // Only handle error if it's not a cancellation
+        if (axios.isCancel(error)) {
+          console.log('Request canceled:', error.message);
+          return;
+        }
+
+        if (isMounted) {
+          console.error('Error fetching posts:', error);
+          setError((error as Error)?.message ?? '');
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchPosts();
+
+    // Cleanup function
+    return () => {
+      isMounted = false; // Set flag to false when unmounting
+      controller.abort(); // Cancel any pending requests
+    };
   }, [baseURL]);
-
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">
-  //       Loading...
-  //     </div>
-  //   );
-  // }
-
-  // if (error) {
-  //   return <div className="text-red-500 text-center">{error}</div>;
-  // }
-
   return (
     <LoadingErrorHandler isLoading={isLoading} error={error}>
       <div className="flex flex-col min-h-screen">
