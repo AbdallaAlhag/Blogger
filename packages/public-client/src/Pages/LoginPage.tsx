@@ -71,10 +71,20 @@ export default function LoginPage() {
 
           // Save token to localStorage
           // localStorage.setItem('token', token); // Or use sessionStorage or cookies
+          // Cookies.set('token', token, {
+          //   expires: 1,
+          //   sameSite: 'lax',
+          //   secure: true,
+          // });
           Cookies.set('token', token, {
-            expires: 1,
-            sameSite: 'lax',
             secure: true,
+            sameSite: 'Lax',
+            domain: publicURL,
+          });
+          Cookies.set('token', token, {
+            secure: true,
+            sameSite: 'Lax',
+            domain: privateURL,
           });
           console.log('Successfully logged in');
           navigate('/', { replace: true });
