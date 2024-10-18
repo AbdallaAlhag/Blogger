@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
 
     console.log('Environment:', import.meta.env.MODE);
     console.log('Base URL:', baseURL);
-    
+
     let isMounted = true; // Add this flag
     const controller = new AbortController();
 
@@ -56,13 +56,29 @@ const HomePage: React.FC = () => {
         }
       } catch (error: unknown) {
         // Only handle error if it's not a cancellation
+        console.log('Full error object:', error);
         if (axios.isCancel(error)) {
           console.log('Request canceled:', error.message);
           return;
         }
 
+        if (error instanceof Error) {
+          console.error('Error details:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
+          });
+        }
+
+        if (axios.isAxiosError(error)) {
+          console.error('Axios error details:', {
+            response: error.response?.data,
+            status: error.response?.status,
+            headers: error.response?.headers,
+          });
+        }
+
         if (isMounted) {
-          console.error('Error fetching posts:', error);
           setError((error as Error)?.message ?? '');
           setIsLoading(false);
         }
