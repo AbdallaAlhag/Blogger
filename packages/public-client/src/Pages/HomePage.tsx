@@ -38,6 +38,9 @@ const HomePage: React.FC = () => {
       return;
     }
 
+    console.log('Environment:', import.meta.env.MODE);
+    console.log('Base URL:', baseURL);
+    
     let isMounted = true; // Add this flag
     const controller = new AbortController();
 

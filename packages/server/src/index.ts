@@ -54,6 +54,8 @@ app.use(
         privateAddress,
         productionPublicAddress,
         productionPrivateAddress,
+        'https://blogger-public.netlify.app/',
+        'https://blogger-public.netlify.app/',
         'http://localhost:4173',
         'http://localhost:4174',
       ];
