@@ -23,8 +23,6 @@ export default function BlogPostEditor({
     onContentChange(newContent);
   };
 
-  console.log('BlogPostEditor rendering with content:', content);
-
   return (
     <div className="space-y-2">
       <label

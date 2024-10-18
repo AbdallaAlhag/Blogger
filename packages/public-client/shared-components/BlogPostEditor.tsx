@@ -16,14 +16,13 @@ export default function BlogPostEditor({
     if (initialContent !== content) {
       setContent(initialContent);
     }
-  }, [initialContent]);
+  }, [content, initialContent]);
 
   const handleEditorChange = (newContent: string) => {
     setContent(newContent);
     onContentChange(newContent);
   };
 
-  console.log('BlogPostEditor rendering with content:', content);
 
   return (
     <div className="space-y-2">

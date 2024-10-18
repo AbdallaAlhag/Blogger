@@ -31,7 +31,11 @@ export default function LoginPage() {
       if (res.status === 200) {
         const token = res.data.token;
         // localStorage.setItem('token', token);
-        Cookies.set('token', token, { expires: 1 });
+        Cookies.set('token', token, {
+          expires: 1,
+          sameSite: 'lax',
+          secure: true,
+        });
         navigate('/', { replace: true });
       } else {
         setError('Login failed. Please try again.');
@@ -60,7 +64,7 @@ export default function LoginPage() {
 
           // Save token to localStorage
           // localStorage.setItem('token', token); // Or use sessionStorage or cookies
-          Cookies.set('token', token, { expires: 1 });
+          Cookies.set('token', token, { expires: 1, sameSite: 'lax', secure: true });
           console.log('Successfully logged in');
           navigate('/', { replace: true });
         } else {
@@ -73,7 +77,7 @@ export default function LoginPage() {
         setError('Guest login failed. Please try again.');
       });
   };
-  
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">

@@ -12,7 +12,7 @@ export function Header() {
   const isAuthenticated = () => !!Cookies.get('token'); // returns true if token exists
   useEffect(() => {
     setIsUserLoggedIn(isAuthenticated());
-    console.log(isUserLoggedIn);
+    console.log('is User logged in: ', isUserLoggedIn);
   }, []);
   return (
     <header className="bg-background shadow-md">
