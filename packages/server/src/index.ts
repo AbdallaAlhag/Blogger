@@ -29,6 +29,9 @@ const corsOptions = {
   ], // allow to server to accept request from our react clients
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['set-cookie'],
 };
 
 // const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];

@@ -7,50 +7,58 @@
 
 ### Progress:
 
-    ✅❌
-    ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
-    ✅ Set up github
-    ✅ Set up simple server and create main dashboard
-    ✅ Create simple db and set up prisma
-    ✅ Created task ctrl+alt+f for npm run format
-    ✅ Setup prisma db, create route, controller, and query for get and post posts
-    ✅ Write seed file to query db for posts with starting data
-    ✅ Connect server db to front end
-    ✅ Create footer and header
-    ✅ Create postcard for articles in dashboard and article pages
-    ✅ Style HomePage and components
-    ✅ Seed test data for dashboard
-    ✅ Add post loading animation
-    ✅ Create individual article pages
-    ✅ Work on comments section components for article pages
-        ✅ Create comment MVC that attaches comments to posts id
-    ✅ Link sign up and login to redirect to the private client and logout redirects to public client
-      ✅ Fix issue with redirecting to private client but not redirecting to public client
-    ✅ Create auth and login/signup pages
-        ✅ Allow users to sign up and log in
-        ✅ Implement passport to authenticate users
-        ✅ Use JWT for auth
-    ✅ Create Post blog page
-    ✅ Create all blogs page with pagination and sorting
-    ✅ Validate front end login and signup form and showcase errors
-    ✅ Validate back end signup form and showcase errors
-    ✅ Add comments count to PostCard components
-    ✅ Add TinyMCE editor to create blog
-    ✅ slight problem directing to create blog page from public and also when publishing the articles
-      ✅ Added cookies instead of local storage to ease transferring of local storage between public and private client
-    ✅ Check out authorID in form for create blog post
-    ✅ Fix post format html bug from TinyMCE editor
-    ✅ Fix image upload bug, saved it from my server: http://localhost:3000/uploads/ Probably change that later
-    ✅ Create edit and unpublish button after authenticating user and user id = author id
-    ✅ Patch publish for a post
-    ✅ Allow users to edit their own posts
-    ✅ Create an all blogs page with user's own posts regardless of publish status
-    ✅ Add publish button and try to combine it with unpublish
-    ❌ Add animation to articles like slide in
-    ❌ Add tags?
-    ✅ update loading, error, and no post found states in article, blog, home pages
-    ❌ deploy this bad boy to railway -server
-    ❌ deploy front end to netlify
+    🌳 Project Progress:
+├── Setup
+│   ├── ✅ Set up restore terminal on public client and server, removed sql, and commented out private client + p-studio
+│   ├── ✅ Set up github
+│   ├── ✅ Set up simple server and create main dashboard
+│   ├── ✅ Create simple db and set up prisma
+│   ├── ✅ Created task ctrl+alt+f for npm run format
+│   
+├── Database Operations
+│   ├── ✅ Setup prisma db, create route, controller, and query   for get and post posts
+│   ├── ✅ Write seed file to query db for posts with starting data
+│   ├── ✅ Connect server db to front end
+│   
+├── Frontend Development
+│   ├── ✅ Create footer and header
+│   ├── ✅ Create postcard for articles in dashboard and article pages
+│   ├── ✅ Style HomePage and components
+│   ├── ✅ Seed test data for dashboard
+│   ├── ✅ Add post loading animation
+│   ├── ✅ Create individual article pages
+│   ├── ✅ Work on comments section components for article pages
+│       ├── ✅ Create comment MVC that attaches comments to posts id
+│   ├── ✅ Link sign up and login to redirect to the private client and logout redirects to public client
+│       ├── ✅ Fix issue with redirecting to private client but not redirecting to public client
+│   ├── ✅ Create auth and login/signup pages
+│       ├── ✅ Allow users to sign up and log in
+│       ├── ✅ Implement passport to authenticate users
+│       ├── ✅ Use JWT for auth
+│   ├── ✅ Create Post blog page
+│   ├── ✅ Create all blogs page with pagination and sorting
+│   ├── ✅ Validate front end login and signup form and showcase errors
+│   ├── ✅ Add comments count to PostCard components
+│   ├── ✅ Add TinyMCE editor to create blog
+│   ├── ✅ slight problem directing to create blog page from public and also when publishing the articles
+│       ├── ✅ Added cookies instead of local storage to ease transferring of local storage between public and private client
+│   ├── ✅ Check out authorID in form for create blog post
+│   ├── ✅ Fix post format html bug from TinyMCE editor
+│   ├── ✅ Fix image upload bug, saved it from my server: http://localhost:3000/uploads/ Probably change that later
+│   ├── ✅ Create edit and unpublish button after authenticating user and user id = author id
+│   ├── ✅ Patch publish for a post
+│   ├── ✅ Allow users to edit their own posts
+│   ├── ✅ Create an all blogs page with user's own posts regardless of publish status
+│   ├── ✅ Add publish button and try to combine it with unpublish
+│   ├── ❌ Add animation to articles like slide in
+│   ├── ❌ Add tags?
+│   ├── ✅ update loading, error, and no post found states in article, blog, home pages
+│   
+├── Deployment
+│   ├── ✅ deploy this bad boy to railway -server
+│   ├── ✅ deploy front end to netlify
+│   ├── ❌ Connect deployed front end to deployed server
+
 
 # Monorepo set up:
 
