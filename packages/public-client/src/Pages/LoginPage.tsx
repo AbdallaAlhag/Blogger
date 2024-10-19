@@ -13,8 +13,8 @@ export default function LoginPage() {
   const navigate = useNavigate(); // Hook to programmatically navigate
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
-  const publicURL = import.meta.env.VITE_PUBLIC_URL;
-  const privateURL = import.meta.env.VITE_PRIVATE_URL;
+  const publicURL = import.meta.env.VITE_PUBLIC_CLIENT_URL;
+  const privateURL = import.meta.env.VITE_PRIVATE_CLIENT_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

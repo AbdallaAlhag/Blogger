@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -10,12 +9,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = () => !!Cookies.get('token'); //
 
   // // console.log('token is: ', token);
-  // useEffect(() => {
-  //   // if (!token) {
-  //   if (!isAuthenticated()) {
-  //     navigate('/login'); // Redirect to login if not authenticated
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    // if (!token) {
+    if (!isAuthenticated()) {
+      navigate('/login'); // Redirect to login if not authenticated
+    }
+  }, [navigate]);
 
   return <>{children}</>;
 };
