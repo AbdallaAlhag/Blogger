@@ -13,8 +13,8 @@ export default function LoginPage() {
   const navigate = useNavigate(); // Hook to programmatically navigate
 
   const baseURL = import.meta.env.VITE_API_BASE_URL;
-  const publicURL = new URL(import.meta.env.VITE_PUBLIC_CLIENT_URL).hostname
-  const privateURL = new URL(import.meta.env.VITE_PRIVATE_CLIENT_URL).hostname
+  const publicURL = new URL(import.meta.env.VITE_PUBLIC_CLIENT_URL).hostname;
+  const privateURL = new URL(import.meta.env.VITE_PRIVATE_CLIENT_URL).hostname;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null); // Clear any existing errors
@@ -80,17 +80,16 @@ export default function LoginPage() {
           //   sameSite: 'lax',
           //   secure: true,
           // });
-          console.log('Cookies: ', Cookies.get('token'));
           console.log('public domain: ', publicURL);
           console.log('private domain: ', privateURL);
           Cookies.set('token', token, {
             secure: true,
-            sameSite: 'Lax',
+            sameSite: 'None',
             domain: publicURL,
           });
           Cookies.set('token', token, {
             secure: true,
-            sameSite: 'Lax',
+            sameSite: 'None',
             domain: privateURL,
           });
           console.log('Cookies: ', Cookies.get('token'));
