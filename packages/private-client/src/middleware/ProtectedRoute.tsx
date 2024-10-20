@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   // const token = localStorage.getItem('token'); // Check JWT token
   // const token = Cookies.get('token'); // Get the token from cookies
   const isAuthenticated = () => !!Cookies.get('token'); //
-
+  console.log(Cookies.get('token'));
   console.log('token is: ', isAuthenticated());
 
   useEffect(() => {
