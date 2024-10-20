@@ -12,19 +12,19 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   
   useEffect(() => {
     // if (!token) {
-    // if (!isAuthenticated()) {
-    //   navigate('/login'); // Redirect to login if not authenticated
-    // }
+    if (!isAuthenticated()) {
+      navigate('/login'); // Redirect to login if not authenticated
+    }
   }, [navigate]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!isAuthenticated()) {
-        navigate('/login'); // Redirect to login if not authenticated
-      }
-    }, 30000);
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (!isAuthenticated()) {
+  //       navigate('/login'); // Redirect to login if not authenticated
+  //     }
+  //   }, 30000);
+  //   return () => clearTimeout(timer);
+  // }, [navigate]);
 
   return <>{children}</>;
 };
