@@ -34,15 +34,20 @@ export default function LoginPage() {
         const token = res.data.token;
         // localStorage.setItem('token', token);
         Cookies.set('token', token, {
+          expires: 1,
+          sameSite: 'lax',
           secure: true,
-          sameSite: 'None',
-          domain: publicURL,
         });
-        Cookies.set('token', token, {
-          secure: true,
-          sameSite: 'None',
-          domain: privateURL,
-        });
+        // Cookies.set('token', token, {
+        //   secure: true,
+        //   sameSite: 'None',
+        //   domain: publicURL,
+        // });
+        // Cookies.set('token', token, {
+        //   secure: true,
+        //   sameSite: 'None',
+        //   domain: privateURL,
+        // });
         navigate('/', { replace: true });
       } else {
         setError('Login failed. Please try again.');
@@ -71,21 +76,24 @@ export default function LoginPage() {
 
           // Save token to localStorage
           // localStorage.setItem('token', token); // Or use sessionStorage or cookies
+          Cookies.set('token', token, {
+            expires: 1,
+            sameSite: 'lax',
+            secure: true,
+          });
+          console.log('Cookies: ', Cookies.get('token'));
+          console.log('public url: ', publicURL);
+          console.log('private url: ', privateURL);
           // Cookies.set('token', token, {
-          //   expires: 1,
-          //   sameSite: 'lax',
           //   secure: true,
+          //   sameSite: 'None',
+          //   domain: publicURL,
           // });
-          Cookies.set('token', token, {
-            secure: true,
-            sameSite: 'None',
-            domain: publicURL,
-          });
-          Cookies.set('token', token, {
-            secure: true,
-            sameSite: 'None',
-            domain: privateURL,
-          });
+          // Cookies.set('token', token, {
+          //   secure: true,
+          //   sameSite: 'None',
+          //   domain: privateURL,
+          // });
           console.log('Cookies: ', Cookies.get('token'));
           console.log('Successfully logged in');
           navigate('/', { replace: true });
