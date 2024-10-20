@@ -9,11 +9,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = () => !!Cookies.get('token'); //
 
   console.log('token is: ', isAuthenticated());
-  
+
   useEffect(() => {
     // if (!token) {
     if (!isAuthenticated()) {
-      navigate('/login'); // Redirect to login if not authenticated
+      // navigate('/login'); // Redirect to login if not authenticated
+      console.log('not authenticated');
     }
   }, [navigate]);
 

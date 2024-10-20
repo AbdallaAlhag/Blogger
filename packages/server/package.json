@@ -11,7 +11,8 @@
     "seed": "npx tsx src/db/seed.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "start:prod": "cross-env NODE_ENV=production npm run build && npm start"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "@types/passport": "^1.0.16",
     "@types/passport-local": "^1.0.38",
     "@types/sanitize-html": "^2.13.0",
+    "cross-env": "^7.0.3",
     "prisma": "^5.21.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
