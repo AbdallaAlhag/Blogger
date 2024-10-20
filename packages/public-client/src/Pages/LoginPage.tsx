@@ -35,12 +35,12 @@ export default function LoginPage() {
         // localStorage.setItem('token', token);
         Cookies.set('token', token, {
           secure: true,
-          sameSite: 'Lax',
+          sameSite: 'None',
           domain: publicURL,
         });
         Cookies.set('token', token, {
           secure: true,
-          sameSite: 'Lax',
+          sameSite: 'None',
           domain: privateURL,
         });
         navigate('/', { replace: true });
@@ -78,14 +78,15 @@ export default function LoginPage() {
           // });
           Cookies.set('token', token, {
             secure: true,
-            sameSite: 'Lax',
+            sameSite: 'None',
             domain: publicURL,
           });
           Cookies.set('token', token, {
             secure: true,
-            sameSite: 'Lax',
+            sameSite: 'None',
             domain: privateURL,
           });
+          console.log('Cookies: ', Cookies.get('token'));
           console.log('Successfully logged in');
           navigate('/', { replace: true });
         } else {

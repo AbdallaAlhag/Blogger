@@ -53,7 +53,6 @@
     ✅ deploy front end to netlify
     ✅ Connect deployed front end to deployed server
     ✅ Work on fixing reload glitch issue 
-    ❌ Work on slight loading page 
     ❌ Try to fix protected routes, we are able to switch between public and private client if we turn off protected routes
 
 # Monorepo set up:
