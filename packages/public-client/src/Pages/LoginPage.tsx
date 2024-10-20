@@ -32,21 +32,21 @@ export default function LoginPage() {
       if (res.status === 200) {
         const token = res.data.token;
         // localStorage.setItem('token', token);
+        Cookies.set('token', token, {
+          expires: 1,
+          sameSite: 'None',
+          secure: true,
+        });
         // Cookies.set('token', token, {
-        //   expires: 1,
-        //   sameSite: 'lax',
         //   secure: true,
+        //   sameSite: 'None',
+        //   domain: publicURL,
         // });
-        Cookies.set('token', token, {
-          secure: true,
-          sameSite: 'None',
-          domain: publicURL,
-        });
-        Cookies.set('token', token, {
-          secure: true,
-          sameSite: 'None',
-          domain: privateURL,
-        });
+        // Cookies.set('token', token, {
+        //   secure: true,
+        //   sameSite: 'None',
+        //   domain: privateURL,
+        // });
         navigate('/', { replace: true });
       } else {
         setError('Login failed. Please try again.');
@@ -75,23 +75,23 @@ export default function LoginPage() {
 
           // Save token to localStorage
           // localStorage.setItem('token', token); // Or use sessionStorage or cookies
-          // Cookies.set('token', token, {
-          //   expires: 1,
-          //   sameSite: 'lax',
-          //   secure: true,
-          // });
+          Cookies.set('token', token, {
+            expires: 1,
+            sameSite: 'None',
+            secure: true,
+          });
           console.log('public domain: ', publicURL);
           console.log('private domain: ', privateURL);
-          Cookies.set('token', token, {
-            secure: true,
-            sameSite: 'None',
-            domain: publicURL,
-          });
-          Cookies.set('token', token, {
-            secure: true,
-            sameSite: 'None',
-            domain: privateURL,
-          });
+          // Cookies.set('token', token, {
+          //   secure: true,
+          //   sameSite: 'None',
+          //   domain: publicURL,
+          // });
+          // Cookies.set('token', token, {
+          //   secure: true,
+          //   sameSite: 'None',
+          //   domain: privateURL,
+          // });
           console.log('Cookies: ', Cookies.get('token'));
           console.log('Successfully logged in');
           navigate('/', { replace: true });
