@@ -13,13 +13,17 @@ function Auth() {
 
     if (token) {
       // Set cookie
+      console.log('token is: ', token);
       Cookies.set('token', token, {
         secure: true,
         sameSite: 'None',
       });
+    if (!token) {
+        console.log('no token');
+    }
 
       // Go to home page
-      navigate('/', { replace: true });
+    //   navigate('/', { replace: true });
     }
   }, [navigate]);
 
