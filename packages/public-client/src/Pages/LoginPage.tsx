@@ -94,6 +94,9 @@ export default function LoginPage() {
           // });
           console.log('Cookies: ', Cookies.get('token'));
           console.log('Successfully logged in');
+
+          window.location.href = `${import.meta.env.VITE_PRIVATE_CLIENT_URL}/blog?token=${token}`;          
+          
           navigate('/', { replace: true });
         } else {
           setError('Guest login failed. Please try again.');

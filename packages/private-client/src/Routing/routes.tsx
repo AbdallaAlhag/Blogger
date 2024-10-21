@@ -14,6 +14,7 @@ import CreateBlogPost from '../Pages/CreateBlogPage';
 import EditBlogPost from '../Pages/EditBlogPage';
 import AllBlogsPage from '../Pages/AllBlogsPage';
 import ProtectedRoute from '../middleware/ProtectedRoute';
+import Auth from '../Pages/Auth';
 import { Params, LoaderFunction } from 'react-router-dom';
 
 // Utility to redirect to public client
@@ -55,6 +56,11 @@ const routes = [
   {
     path: '/',
     element: <HomePage />,
+    loader: redirectToHome,
+  },
+  {
+    path: '/auth',
+    element: <Auth />,
     loader: redirectToHome,
   },
   {

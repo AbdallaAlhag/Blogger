@@ -54,6 +54,7 @@
     ✅ Connect deployed front end to deployed server
     ✅ Work on fixing reload glitch issue 
     ❌ Try to fix protected routes, we are able to switch between public and private client if we turn off protected routes
+      ❌ Switch from cookies to local storage to store tokens since netlify doesn't support cookie sharing between different domains
 
 # Monorepo set up:
 
